@@ -159,17 +159,21 @@ self.__RSC_MANIFEST={
   },
   "__edge_ssr_module_mapping__": {},
   "__entry_css_files__": {
+<<<<<<< HEAD
     "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/page": [
       "static/css/app/login/page.css"
     ],
     "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page": [
+=======
+    "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page": [
+>>>>>>> fbc4adddd7ec59f5510c694d919956d53be8b34e
       "static/css/app/page.css"
     ],
-    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/layout": [
+    "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\layout": [
       "static/css/_app-client_app_globals_css.css"
     ]
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/client/components/app-router.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\client\\components\\app-router.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/app-router.js",
       "name": "",
@@ -195,7 +199,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/esm/client/components/app-router.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\esm\\client\\components\\app-router.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/app-router.js",
       "name": "",
@@ -221,7 +225,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/client/components/error-boundary.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\client\\components\\error-boundary.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/error-boundary.js",
       "name": "",
@@ -247,7 +251,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/esm/client/components/error-boundary.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\esm\\client\\components\\error-boundary.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/error-boundary.js",
       "name": "",
@@ -273,7 +277,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/client/components/layout-router.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\client\\components\\layout-router.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/layout-router.js",
       "name": "",
@@ -299,7 +303,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/esm/client/components/layout-router.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\esm\\client\\components\\layout-router.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/layout-router.js",
       "name": "",
@@ -325,7 +329,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/client/components/render-from-template-context.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\client\\components\\render-from-template-context.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js",
       "name": "",
@@ -351,7 +355,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/esm/client/components/render-from-template-context.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\esm\\client\\components\\render-from-template-context.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js",
       "name": "",
@@ -377,6 +381,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
+<<<<<<< HEAD
   "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/login.module.scss": {
     "default": {
       "id": "null",
@@ -413,6 +418,9 @@ self.__RSC_MANIFEST={
     }
   },
   "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.module.scss": {
+=======
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\component\\CreateCLForm.module.scss": {
+>>>>>>> fbc4adddd7ec59f5510c694d919956d53be8b34e
     "default": {
       "id": "null",
       "name": "default",
@@ -421,7 +429,20 @@ self.__RSC_MANIFEST={
       ]
     }
   },
+<<<<<<< HEAD
   "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.jsx": {
+=======
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/page.css"
+      ]
+    }
+  },
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page.tsx": {
+>>>>>>> fbc4adddd7ec59f5510c694d919956d53be8b34e
     "": {
       "id": "(app-client)/./app/page.jsx",
       "name": "",
@@ -447,7 +468,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/globals.css": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\globals.css": {
     "default": {
       "id": "null",
       "name": "default",
