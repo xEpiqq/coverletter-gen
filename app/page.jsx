@@ -6,6 +6,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 
+import CreateCLForm from './component/CreateCLForm'
+
 const firebaseConfig = {
   apiKey: "AIzaSyDdGzzgHKCMZl8NvIBq9LtfRT_kCFrB9eM",
   authDomain: "gptcoverletter.firebaseapp.com",
@@ -70,24 +72,7 @@ function Page() {
         {user ? <img src={user.photoURL} style={{borderRadius: "50rem"}}/> : <h1>Guest</h1>}
                 
       </div>
-      <div className={s.content} >
-        <div className={s.searchbox_container}>
-          <input className={s.searchbox} type='text' value={addMovie} onChange={(e) => setAddMovie(e.target.value)} 
-          onKeyDown={(e) => { if (e.keyCode === 13) { addMovieToList()}}} placeholder='Add a movie to the list' />
-          <button className={s.addbutton} type='submit' onClick={() => addMovieToList()}>+</button>
-        </div>
-      </div>
-
-        <div className={s.searchresults}>
-            {current_movies.map((movie, index) => (
-              <div className={s.movie_element} key={index}>{movie}<img className={s.tiny_x} src='/tiny_x.svg' onClick={() => deleteItem(movie)}/></div>
-            ))}
-        </div>
-
-      <div className={s.email_and_submit}>
-        <input className={s.emailbox} type='text' value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => { if (e.keyCode === 13) { submitList()}}} placeholder='email to send results to' />
-        <button className={s.submitbutton} type='submit' onClick={() => submitList()}>send now</button>
-      </div>
+      <CreateCLForm />
     </div>
   )
 }
