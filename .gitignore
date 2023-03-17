@@ -1,2 +1,12 @@
 node_modules/
-.env
+
+# next.js
+/.next/
+/out/
+
+.vscode/
+.vscode
+.env.local
+
+
+.env*.local

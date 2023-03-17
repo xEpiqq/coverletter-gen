@@ -104,9 +104,35 @@
         "async": false
       }
     },
-    "(app-client)/./app/page.tsx": {
+    "(app-client)/./app/login/page.jsx": {
       "": {
-        "id": "(sc_client)/./app/page.tsx",
+        "id": "(sc_client)/./app/login/page.jsx",
+        "name": "",
+        "chunks": [
+          "app/login/page:app/login/page"
+        ],
+        "async": false
+      },
+      "*": {
+        "id": "(sc_client)/./app/login/page.jsx",
+        "name": "*",
+        "chunks": [
+          "app/login/page:app/login/page"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/login/page.jsx",
+        "name": "default",
+        "chunks": [
+          "app/login/page:app/login/page"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./app/page.jsx": {
+      "": {
+        "id": "(sc_client)/./app/page.jsx",
         "name": "",
         "chunks": [
           "app/page:app/page"
@@ -114,7 +140,7 @@
         "async": false
       },
       "*": {
-        "id": "(sc_client)/./app/page.tsx",
+        "id": "(sc_client)/./app/page.jsx",
         "name": "*",
         "chunks": [
           "app/page:app/page"
@@ -122,7 +148,7 @@
         "async": false
       },
       "default": {
-        "id": "(sc_client)/./app/page.tsx",
+        "id": "(sc_client)/./app/page.jsx",
         "name": "default",
         "chunks": [
           "app/page:app/page"
@@ -133,6 +159,9 @@
   },
   "__edge_ssr_module_mapping__": {},
   "__entry_css_files__": {
+    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/page": [
+      "static/css/app/login/page.css"
+    ],
     "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page": [
       "static/css/app/page.css"
     ],
@@ -348,6 +377,41 @@
       "async": false
     }
   },
+  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/login.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/login/page.css"
+      ]
+    }
+  },
+  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/page.jsx": {
+    "": {
+      "id": "(app-client)/./app/login/page.jsx",
+      "name": "",
+      "chunks": [
+        "app/login/page:app/login/page"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./app/login/page.jsx",
+      "name": "*",
+      "chunks": [
+        "app/login/page:app/login/page"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./app/login/page.jsx",
+      "name": "default",
+      "chunks": [
+        "app/login/page:app/login/page"
+      ],
+      "async": false
+    }
+  },
   "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.module.scss": {
     "default": {
       "id": "null",
@@ -357,9 +421,9 @@
       ]
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.tsx": {
+  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.jsx": {
     "": {
-      "id": "(app-client)/./app/page.tsx",
+      "id": "(app-client)/./app/page.jsx",
       "name": "",
       "chunks": [
         "app/page:app/page"
@@ -367,7 +431,7 @@
       "async": false
     },
     "*": {
-      "id": "(app-client)/./app/page.tsx",
+      "id": "(app-client)/./app/page.jsx",
       "name": "*",
       "chunks": [
         "app/page:app/page"
@@ -375,7 +439,7 @@
       "async": false
     },
     "default": {
-      "id": "(app-client)/./app/page.tsx",
+      "id": "(app-client)/./app/page.jsx",
       "name": "default",
       "chunks": [
         "app/page:app/page"

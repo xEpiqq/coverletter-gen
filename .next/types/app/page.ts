@@ -1,4 +1,4 @@
-// File: /home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.tsx
+// File: /home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.jsx
 import * as entry from '../../../app/page'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface'
 
