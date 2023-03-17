@@ -1,0 +1,180 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[10].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[2].oneOf[10].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[2].oneOf[10].use[5]!./app/page.module.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.page_home__5GKT7 {
+  background-color: black;
+  color: white;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page_navbar__NiRZE {
+  display: flex;
+  width: 100%;
+  height: 5rem;
+  border-bottom: 0.5px solid #333333;
+}
+.page_navbar__NiRZE img {
+  padding-top: 0.3rem;
+  padding-left: 3rem;
+  height: 4rem;
+  width: 4rem;
+}
+.page_navbar__NiRZE h2 {
+  padding-top: 0.3rem;
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.page_content__TwuVy {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.page_searchbox_container__iBQDE {
+  margin-top: 3rem;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.page_searchbox__qeAXm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+  height: 100%;
+  border: 1px solid #333333;
+  border-radius: 1rem 0rem 0rem 1rem;
+  color: #999999;
+  background: none;
+  padding-left: 1rem;
+}
+.page_searchbox__qeAXm:focus {
+  outline: none;
+}
+
+.page_addbutton__ntZJ7 {
+  height: 100%;
+  height: 2.72rem;
+  border: 1px solid #333333;
+  background: #111111;
+  color: #999999;
+  border-left: none;
+  transition: 0.3s;
+  width: 3rem;
+}
+.page_addbutton__ntZJ7:focus {
+  outline: none;
+}
+.page_addbutton__ntZJ7:hover {
+  background: #333333;
+  cursor: pointer;
+}
+
+.page_searchresults__vPe76 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 960px;
+  margin-top: 3rem;
+}
+
+.page_movie_element__AX7Ps {
+  position: relative;
+  width: auto;
+  height: 1rem;
+  display: flex;
+  color: #999999;
+  font-size: 0.75rem;
+  background: #111111;
+  border: 1px solid #333333;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 0.5rem;
+  max-width: 10rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(202, 155, 88, 0.2) 0px 5px 15px;
+}
+
+.page_tiny_x__z8acG {
+  display: none;
+  padding-top: 0.1rem;
+  padding-left: 0.5rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  opacity: 0.5;
+}
+.page_tiny_x__z8acG:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.page_movie_element__AX7Ps:hover {
+  background: #333333;
+  padding-right: 0.7rem;
+  cursor: pointer;
+}
+.page_movie_element__AX7Ps:hover .page_tiny_x__z8acG {
+  display: flex;
+}
+
+.page_email_and_submit__dHe9A {
+  position: fixed;
+  z-index: 3;
+  right: 3rem;
+  bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.page_submitbutton__COuVD {
+  border: 1px solid #333333;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  background: #111111;
+  color: rgb(55, 55, 55);
+  transition: 0.3s;
+  font-size: 0.75rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-left: none;
+}
+.page_submitbutton__COuVD:focus {
+  outline: none;
+}
+.page_submitbutton__COuVD:hover {
+  cursor: pointer;
+  background: #212121;
+  border: 1px solid #ffffff;
+  color: white;
+}
+
+.page_emailbox__KSZi6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 17rem;
+  height: 2rem;
+  border: 1px solid #ca9b58;
+  border-radius: 1rem 0rem 0rem 1rem;
+  color: #999999;
+  background: none;
+  padding-left: 1rem;
+  border-style: dashed;
+}
+.page_emailbox__KSZi6:focus {
+  outline: none;
+}
