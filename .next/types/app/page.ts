@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // File: /home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.jsx
+=======
+// File: C:\Users\wing_\Programming\coverletter-gen\app\page.jsx
+>>>>>>> eb741d0a31924a35a5da4af583e90efb86bf09f7
 import * as entry from '../../../app/page'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface'
 

@@ -133,7 +133,11 @@ self.__RSC_MANIFEST={
   },
   "__edge_ssr_module_mapping__": {},
   "__entry_css_files__": {
+<<<<<<< HEAD
     "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page": [
+=======
+    "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page": [
+>>>>>>> eb741d0a31924a35a5da4af583e90efb86bf09f7
       "static/css/app/page.css"
     ],
     "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/layout": [
@@ -348,7 +352,11 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
+<<<<<<< HEAD
   "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.module.scss": {
+=======
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\component\\CreateCLForm.module.scss": {
+>>>>>>> eb741d0a31924a35a5da4af583e90efb86bf09f7
     "default": {
       "id": "null",
       "name": "default",
@@ -357,7 +365,20 @@ self.__RSC_MANIFEST={
       ]
     }
   },
+<<<<<<< HEAD
   "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.jsx": {
+=======
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/page.css"
+      ]
+    }
+  },
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page.jsx": {
+>>>>>>> eb741d0a31924a35a5da4af583e90efb86bf09f7
     "": {
       "id": "(app-client)/./app/page.jsx",
       "name": "",
