@@ -1,9 +1,3 @@
 {
-<<<<<<< HEAD
-  "/login/page": "app/login/page.js",
   "/page": "app/page.js"
-=======
-  "/page": "app/page.js",
-  "/api/createCoverLetter/route": "app/api/createCoverLetter/route.js"
->>>>>>> fbc4adddd7ec59f5510c694d919956d53be8b34e
 }

@@ -1,4 +1,4 @@
-// File: C:\Users\wing_\Programming\coverletter-gen\app\layout.tsx
+// File: /home/jayden/Desktop/gptcoverletter/gptcoverletter/app/layout.tsx
 import * as entry from '../../../app/layout'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface'
 
