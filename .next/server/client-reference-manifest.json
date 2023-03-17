@@ -133,14 +133,14 @@
   },
   "__edge_ssr_module_mapping__": {},
   "__entry_css_files__": {
-    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page": [
+    "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page": [
       "static/css/app/page.css"
     ],
-    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/layout": [
+    "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\layout": [
       "static/css/_app-client_app_globals_css.css"
     ]
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/client/components/app-router.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\client\\components\\app-router.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/app-router.js",
       "name": "",
@@ -166,7 +166,7 @@
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/esm/client/components/app-router.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\esm\\client\\components\\app-router.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/app-router.js",
       "name": "",
@@ -192,7 +192,7 @@
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/client/components/error-boundary.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\client\\components\\error-boundary.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/error-boundary.js",
       "name": "",
@@ -218,7 +218,7 @@
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/esm/client/components/error-boundary.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\esm\\client\\components\\error-boundary.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/error-boundary.js",
       "name": "",
@@ -244,7 +244,7 @@
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/client/components/layout-router.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\client\\components\\layout-router.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/layout-router.js",
       "name": "",
@@ -270,7 +270,7 @@
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/esm/client/components/layout-router.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\esm\\client\\components\\layout-router.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/layout-router.js",
       "name": "",
@@ -296,7 +296,7 @@
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/client/components/render-from-template-context.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\client\\components\\render-from-template-context.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js",
       "name": "",
@@ -322,7 +322,7 @@
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/esm/client/components/render-from-template-context.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\esm\\client\\components\\render-from-template-context.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js",
       "name": "",
@@ -348,7 +348,7 @@
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.module.scss": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\component\\CreateCLForm.module.scss": {
     "default": {
       "id": "null",
       "name": "default",
@@ -357,7 +357,16 @@
       ]
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.tsx": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/page.css"
+      ]
+    }
+  },
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page.tsx": {
     "": {
       "id": "(app-client)/./app/page.tsx",
       "name": "",
@@ -383,7 +392,7 @@
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/globals.css": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\globals.css": {
     "default": {
       "id": "null",
       "name": "default",

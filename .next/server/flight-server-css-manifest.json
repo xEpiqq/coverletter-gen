@@ -1,14 +1,16 @@
 {
   "__entry_css_mods__": {
-    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page": [
-      "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/globals.css",
-      "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.module.scss"
+    "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page": [
+      "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\globals.css",
+      "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\component\\CreateCLForm.module.scss",
+      "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page.module.scss"
     ]
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.tsx": [
-    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.module.scss"
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page.tsx": [
+    "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page.module.scss",
+    "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\component\\CreateCLForm.module.scss"
   ],
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/layout.tsx": [
-    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/globals.css"
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\layout.tsx": [
+    "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\globals.css"
   ]
 }
