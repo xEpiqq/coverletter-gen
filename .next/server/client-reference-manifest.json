@@ -104,28 +104,28 @@
         "async": false
       }
     },
-    "(app-client)/./app/page.jsx": {
+    "(app-client)/./app/login/page.jsx": {
       "": {
-        "id": "(sc_client)/./app/page.jsx",
+        "id": "(sc_client)/./app/login/page.jsx",
         "name": "",
         "chunks": [
-          "app/page:app/page"
+          "app/login/page:app/login/page"
         ],
         "async": false
       },
       "*": {
-        "id": "(sc_client)/./app/page.jsx",
+        "id": "(sc_client)/./app/login/page.jsx",
         "name": "*",
         "chunks": [
-          "app/page:app/page"
+          "app/login/page:app/login/page"
         ],
         "async": false
       },
       "default": {
-        "id": "(sc_client)/./app/page.jsx",
+        "id": "(sc_client)/./app/login/page.jsx",
         "name": "default",
         "chunks": [
-          "app/page:app/page"
+          "app/login/page:app/login/page"
         ],
         "async": false
       }
@@ -133,12 +133,8 @@
   },
   "__edge_ssr_module_mapping__": {},
   "__entry_css_files__": {
-<<<<<<< HEAD
-    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page": [
-=======
-    "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page": [
->>>>>>> eb741d0a31924a35a5da4af583e90efb86bf09f7
-      "static/css/app/page.css"
+    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/page": [
+      "static/css/app/login/page.css"
     ],
     "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/layout": [
       "static/css/_app-client_app_globals_css.css"
@@ -352,54 +348,37 @@
       "async": false
     }
   },
-<<<<<<< HEAD
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.module.scss": {
-=======
-  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\component\\CreateCLForm.module.scss": {
->>>>>>> eb741d0a31924a35a5da4af583e90efb86bf09f7
+  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/login.module.scss": {
     "default": {
       "id": "null",
       "name": "default",
       "chunks": [
-        "static/css/app/page.css"
+        "static/css/app/login/page.css"
       ]
     }
   },
-<<<<<<< HEAD
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.jsx": {
-=======
-  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page.module.scss": {
-    "default": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/page.css"
-      ]
-    }
-  },
-  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page.jsx": {
->>>>>>> eb741d0a31924a35a5da4af583e90efb86bf09f7
+  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/page.jsx": {
     "": {
-      "id": "(app-client)/./app/page.jsx",
+      "id": "(app-client)/./app/login/page.jsx",
       "name": "",
       "chunks": [
-        "app/page:app/page"
+        "app/login/page:app/login/page"
       ],
       "async": false
     },
     "*": {
-      "id": "(app-client)/./app/page.jsx",
+      "id": "(app-client)/./app/login/page.jsx",
       "name": "*",
       "chunks": [
-        "app/page:app/page"
+        "app/login/page:app/login/page"
       ],
       "async": false
     },
     "default": {
-      "id": "(app-client)/./app/page.jsx",
+      "id": "(app-client)/./app/login/page.jsx",
       "name": "default",
       "chunks": [
-        "app/page:app/page"
+        "app/login/page:app/login/page"
       ],
       "async": false
     }

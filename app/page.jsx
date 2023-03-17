@@ -5,28 +5,14 @@ import { useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
-
+import { app } from '../component/FirebaseApp.jsx'
 import CreateCLForm from './component/CreateCLForm'
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDdGzzgHKCMZl8NvIBq9LtfRT_kCFrB9eM",
-  authDomain: "gptcoverletter.firebaseapp.com",
-  projectId: "gptcoverletter",
-  storageBucket: "gptcoverletter.appspot.com",
-  messagingSenderId: "567270304575",
-  appId: "1:567270304575:web:61c11cb0446367aec1418a",
-  measurementId: "G-3RTKQQE02X"
-};
-
-
 function Page() {
-  const app = initializeApp(firebaseConfig);
 
   const current_movies = []
-
   const auth = getAuth();
   const [user, loading, error] = useAuthState(auth);
-
 
   const [addMovie, setAddMovie] = useState("")
   const [rerenderHack, setRerenderHack] = useState(false)
