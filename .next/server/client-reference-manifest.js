@@ -104,6 +104,32 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
+    "(app-client)/./app/login/page.jsx": {
+      "": {
+        "id": "(sc_client)/./app/login/page.jsx",
+        "name": "",
+        "chunks": [
+          "app/login/page:app/login/page"
+        ],
+        "async": false
+      },
+      "*": {
+        "id": "(sc_client)/./app/login/page.jsx",
+        "name": "*",
+        "chunks": [
+          "app/login/page:app/login/page"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/login/page.jsx",
+        "name": "default",
+        "chunks": [
+          "app/login/page:app/login/page"
+        ],
+        "async": false
+      }
+    },
     "(app-client)/./app/page.jsx": {
       "": {
         "id": "(sc_client)/./app/page.jsx",
@@ -133,6 +159,9 @@ self.__RSC_MANIFEST={
   },
   "__edge_ssr_module_mapping__": {},
   "__entry_css_files__": {
+    "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\login\\page": [
+      "static/css/app/login/page.css"
+    ],
     "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page": [
       "static/css/app/page.css"
     ],
@@ -344,6 +373,41 @@ self.__RSC_MANIFEST={
       "name": "default",
       "chunks": [
         "app-client-internals:app-client-internals"
+      ],
+      "async": false
+    }
+  },
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\login\\login.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/login/page.css"
+      ]
+    }
+  },
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\login\\page.jsx": {
+    "": {
+      "id": "(app-client)/./app/login/page.jsx",
+      "name": "",
+      "chunks": [
+        "app/login/page:app/login/page"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./app/login/page.jsx",
+      "name": "*",
+      "chunks": [
+        "app/login/page:app/login/page"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./app/login/page.jsx",
+      "name": "default",
+      "chunks": [
+        "app/login/page:app/login/page"
       ],
       "async": false
     }
