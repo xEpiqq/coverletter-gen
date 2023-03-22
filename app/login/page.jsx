@@ -5,22 +5,35 @@ import { useState } from 'react'
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { getFirestore, collection, addDoc, setDoc, doc, getDoc  } from "firebase/firestore";
+import { app } from '../component/FirebaseApp.jsx'
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDdGzzgHKCMZl8NvIBq9LtfRT_kCFrB9eM",
-  authDomain: "gptcoverletter.firebaseapp.com",
-  projectId: "gptcoverletter",
-  storageBucket: "gptcoverletter.appspot.com",
-  messagingSenderId: "567270304575",
-  appId: "1:567270304575:web:61c11cb0446367aec1418a",
-  measurementId: "G-3RTKQQE02X"
-};
+///////////////////////////////////////////////////////////////
+//CONSIDER USING FIREBASE REDIRECT ON MOBILE INSTEAD OF POPUP//
+///////////////////////////////////////////////////////////////
 
 function Login() {
-  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
   const [user, loading, error] = useAuthState(auth);
+
+  async function createFirestoreUser(user_id, displayname, email) {
+    const userRef = doc(db, "Users", user_id);
+    const userDoc = await getDoc(userRef);
+  
+    if (userDoc.exists()) {
+      console.log("User document already exists");
+      return;
+    } else {
+      await setDoc(userRef, {
+        name: displayname,
+        email: email,
+        sub: "none"
+      });
+      console.log("User document created");
+    }
+  }
 
   async function googleLogin() {
     try {
@@ -28,7 +41,7 @@ function Login() {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      console.log(user)
+      createFirestoreUser(user.uid, user.displayName, user.email)
       const additionalUserInfo = await getAdditionalUserInfo(result);
       } catch (error) {
       const errorCode = error.code;
@@ -50,9 +63,9 @@ function Login() {
       <div className={s.home}>
           <h1 style={{color: "black"}}>Log in</h1>
           {user && <h1 style={{color: "black"}}>{user.displayName}</h1> }
+          {user && <h1 style={{color: "black"}}>{user.uid}</h1> }
           <button className={s.black} onClick={() => {googleLogin()}}>google login</button>
           <button className={s.black} onClick={() => {handleSignOut()}}>sign out</button>
-
       </div>
   )
 }

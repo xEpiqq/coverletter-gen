@@ -8,20 +8,20 @@
  */
 (self["webpackChunk_N_E"] = self["webpackChunk_N_E"] || []).push([["app/layout"],{
 
-/***/ "(app-client)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=C%3A%5CUsers%5Cwing_%5CProgramming%5Ccoverletter-gen%5Capp%5Cglobals.css&server=false!":
-/*!****************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=C%3A%5CUsers%5Cwing_%5CProgramming%5Ccoverletter-gen%5Capp%5Cglobals.css&server=false! ***!
-  \****************************************************************************************************************************************************************************************/
+/***/ "(app-client)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%2Fhome%2Fjayden%2FDesktop%2Fgptcoverletter%2Fgptcoverletter%2Fapp%2Fglobals.css&server=false!":
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%2Fhome%2Fjayden%2FDesktop%2Fgptcoverletter%2Fgptcoverletter%2Fapp%2Fglobals.css&server=false! ***!
+  \************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
-eval(__webpack_require__.ts("(() => __webpack_require__.e(/*! import() */ \"_app-client_app_globals_css\").then(__webpack_require__.bind(__webpack_require__, /*! ./app/globals.css */ \"(app-client)/./app/globals.css\")))//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1jbGllbnQpLy4vbm9kZV9tb2R1bGVzL25leHQvZGlzdC9idWlsZC93ZWJwYWNrL2xvYWRlcnMvbmV4dC1mbGlnaHQtY2xpZW50LWVudHJ5LWxvYWRlci5qcz9tb2R1bGVzPUMlM0ElNUNVc2VycyU1Q3dpbmdfJTVDUHJvZ3JhbW1pbmclNUNjb3ZlcmxldHRlci1nZW4lNUNhcHAlNUNnbG9iYWxzLmNzcyZzZXJ2ZXI9ZmFsc2UhLmpzIiwibWFwcGluZ3MiOiJBQUFBLE9BQU8sbUxBQW9HIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vX05fRS8/OGYxNiJdLCJzb3VyY2VzQ29udGVudCI6WyIoKCkgPT4gaW1wb3J0KC8qIHdlYnBhY2tNb2RlOiBcImxhenlcIiAqLyBcIkM6XFxcXFVzZXJzXFxcXHdpbmdfXFxcXFByb2dyYW1taW5nXFxcXGNvdmVybGV0dGVyLWdlblxcXFxhcHBcXFxcZ2xvYmFscy5jc3NcIikpIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(app-client)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=C%3A%5CUsers%5Cwing_%5CProgramming%5Ccoverletter-gen%5Capp%5Cglobals.css&server=false!\n"));
+eval(__webpack_require__.ts("(() => __webpack_require__.e(/*! import() */ \"_app-client_app_globals_css\").then(__webpack_require__.bind(__webpack_require__, /*! ./app/globals.css */ \"(app-client)/./app/globals.css\")))//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1jbGllbnQpLy4vbm9kZV9tb2R1bGVzL25leHQvZGlzdC9idWlsZC93ZWJwYWNrL2xvYWRlcnMvbmV4dC1mbGlnaHQtY2xpZW50LWVudHJ5LWxvYWRlci5qcz9tb2R1bGVzPSUyRmhvbWUlMkZqYXlkZW4lMkZEZXNrdG9wJTJGZ3B0Y292ZXJsZXR0ZXIlMkZncHRjb3ZlcmxldHRlciUyRmFwcCUyRmdsb2JhbHMuY3NzJnNlcnZlcj1mYWxzZSEuanMiLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxtTEFBc0ciLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9fTl9FLz82YWVkIl0sInNvdXJjZXNDb250ZW50IjpbIigoKSA9PiBpbXBvcnQoLyogd2VicGFja01vZGU6IFwibGF6eVwiICovIFwiL2hvbWUvamF5ZGVuL0Rlc2t0b3AvZ3B0Y292ZXJsZXR0ZXIvZ3B0Y292ZXJsZXR0ZXIvYXBwL2dsb2JhbHMuY3NzXCIpKSJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(app-client)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%2Fhome%2Fjayden%2FDesktop%2Fgptcoverletter%2Fgptcoverletter%2Fapp%2Fglobals.css&server=false!\n"));
 
 /***/ })
 
 },
 /******/ function(__webpack_require__) { // webpackRuntimeModules
 /******/ var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-/******/ __webpack_require__.O(0, ["main-app"], function() { return __webpack_exec__("(app-client)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=C%3A%5CUsers%5Cwing_%5CProgramming%5Ccoverletter-gen%5Capp%5Cglobals.css&server=false!"); });
+/******/ __webpack_require__.O(0, ["main-app"], function() { return __webpack_exec__("(app-client)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%2Fhome%2Fjayden%2FDesktop%2Fgptcoverletter%2Fgptcoverletter%2Fapp%2Fglobals.css&server=false!"); });
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ _N_E = __webpack_exports__;
 /******/ }
