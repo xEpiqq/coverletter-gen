@@ -12,11 +12,13 @@ import {
 } from "firebase/auth";
 import { app } from "./component/FirebaseApp.jsx";
 import CreateCLForm from "./component/CreateCLForm";
+import { useRouter } from "next/navigation";
 
 function Page() {
   const current_movies = [];
   const auth = getAuth();
   const [user, loading, error] = useAuthState(auth);
+  const router = useRouter();
 
   const [addMovie, setAddMovie] = useState("");
   const [rerenderHack, setRerenderHack] = useState(false);
@@ -63,14 +65,14 @@ function Page() {
             <h3>GPTCOVERLETTER</h3>
           </div>
           <div className={s.login}>
-            {user ? (
+            {false ? (
               <h1 style={{ marginLeft: "4rem" }}>USER</h1>
             ) : (
               <div className={s.login_button_container}>
-                <button className={s.create_account_button}>
+                <button className={s.create_account_button} onClick={() => router.push('/login?signup=true')}>
                   CREATE AN ACCOUNT
                 </button>
-                <button className={s.login_button}>LOGIN</button>
+                <button className={s.login_button} onClick={() => router.push('/login?signup=false')}>LOGIN</button>
               </div>
             )}
           </div>
