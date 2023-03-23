@@ -218,6 +218,10 @@
   font-size: 1.5rem;
   font-weight: bold;
 
+  margin-left: 2rem;
+
+  transform: translate(0, -0.5rem);
+
   padding-top: 1rem;
   h3 {
     color: #000000;
@@ -358,6 +362,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    overflow: hidden;
   }
 
   @media (max-width: 768px) {
