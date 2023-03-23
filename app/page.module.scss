@@ -104,6 +104,19 @@
   }
 }
 
+
+.circle_transition {
+  position: absolute;
+  left: 20vw;
+  bottom: -20vw;
+  width: 100vw;
+  height: 50vw;
+  background-color: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
 .home_first {
   height: 90vh;
 }
@@ -138,6 +151,8 @@
     border: 7px solid #000000;
     box-shadow: 25px 25px 50px 25px rgba(0, 0, 0, 0.25);
     border-radius: 23px;
+    // stop it from resizing when the text is too long
+    
 
     color: black;
 
@@ -294,6 +309,8 @@
   height: 92vh;
   width: 100%;
 
+  z-index: 3;
+
   h1 {
     font-family: "Lexend Deca";
     font-style: normal;
@@ -362,7 +379,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    overflow: hidden;
   }
 
   @media (max-width: 768px) {

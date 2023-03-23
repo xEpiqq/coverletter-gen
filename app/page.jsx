@@ -15,11 +15,9 @@ import CreateCLForm from "./component/CreateCLForm";
 import { useRouter } from "next/navigation";
 import { Typewriter } from "react-simple-typewriter";
 
-const ipsum_words =
-[
-  "Dear Hiring Manager, \nI am writing to express my interest in the open position at your company. My name is John Doe and I believe that my skills and experience make me a strong candidate for the role. I am an experienced professional with a proven track record of success in the industry. \nIn my previous role at XYZ Company, I was responsible for managing a team of professionals and overseeing the implementation of several successful projects. I have extensive experience in project management, strategic planning, and team leadership. I am confident that my skills and experience would be a valuable asset to your team.\n I hold a Bachelor's degree in Business Administration from ABC University and have completed several professional development courses in project management and leadership. I am a highly motivated individual with a strong work ethic and a commitment to excellence. I am confident that I have the skills and experience necessary to excel in this role and contribute to the success of your company. \nThank you for considering my application. I look forward to the opportunity to further discuss my qualifications with you. \nSincerely, John Doe",
-
-]
+const ipsum_words = [
+  "Dear Hiring Manager, \nI am writing to express my interest in the open position at your company. My name is John Doe and I believe that my skills and experience make me a strong candidate for the role. I am an experienced professional with a proven track record of success in the industry. \nIn my previous role at XYZ Company, I was responsible for managing a team of professionals and overseeing the implementation of several successful projects. I have extensive experience in project management, strategic planning, and team leadership. I am confident that my skills and experience would be a valuable asset to your team.\n I hold a Bachelor's degree in Business Administration from ABC University and have completed several professional development courses in ",
+];
 
 function Page() {
   const current_movies = [];
@@ -63,7 +61,9 @@ function Page() {
 
   return (
     <div className={s.page}>
-      <div className={s.gradient_background} />
+      <div className={s.gradient_background}>
+      </div>
+        <div className={s.circle_transition} />
       <div className={s.circle_transition} />
       <div className={s.home}>
         <div className={s.navbar}>
@@ -103,15 +103,15 @@ function Page() {
               </h1>
               <div className={s.text_box}>
                 <span>
-                <Typewriter
-                  words={ipsum_words}
-                  loop={5}
-                  cursor
-                  cursorStyle="_"
-                  typeSpeed={40}
-                  deleteSpeed={10}
-                  delaySpeed={1000}
-                />
+                  <Typewriter
+                    words={ipsum_words}
+                    loop={5}
+                    cursor
+                    cursorStyle="_"
+                    typeSpeed={40}
+                    deleteSpeed={10}
+                    delaySpeed={1000}
+                  />
                 </span>
                 <button>use full version</button>
               </div>
