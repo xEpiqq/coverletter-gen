@@ -104,57 +104,28 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
-    "(app-client)/./app/login/page.jsx": {
-<<<<<<< HEAD
-      "": {
-        "id": "(sc_client)/./app/login/page.jsx",
-        "name": "",
-        "chunks": [
-          "app/login/page:app/login/page"
-        ],
-        "async": false
-      },
-      "*": {
-        "id": "(sc_client)/./app/login/page.jsx",
-        "name": "*",
-        "chunks": [
-          "app/login/page:app/login/page"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./app/login/page.jsx",
-        "name": "default",
-        "chunks": [
-          "app/login/page:app/login/page"
-        ],
-        "async": false
-      }
-    },
     "(app-client)/./app/page.jsx": {
-=======
->>>>>>> a37c7da4b8b46633437a04fbb84434724c0d7533
       "": {
-        "id": "(sc_client)/./app/login/page.jsx",
+        "id": "(sc_client)/./app/page.jsx",
         "name": "",
         "chunks": [
-          "app/login/page:app/login/page"
+          "app/page:app/page"
         ],
         "async": false
       },
       "*": {
-        "id": "(sc_client)/./app/login/page.jsx",
+        "id": "(sc_client)/./app/page.jsx",
         "name": "*",
         "chunks": [
-          "app/login/page:app/login/page"
+          "app/page:app/page"
         ],
         "async": false
       },
       "default": {
-        "id": "(sc_client)/./app/login/page.jsx",
+        "id": "(sc_client)/./app/page.jsx",
         "name": "default",
         "chunks": [
-          "app/login/page:app/login/page"
+          "app/page:app/page"
         ],
         "async": false
       }
@@ -162,22 +133,14 @@ self.__RSC_MANIFEST={
   },
   "__edge_ssr_module_mapping__": {},
   "__entry_css_files__": {
-<<<<<<< HEAD
-    "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\login\\page": [
-      "static/css/app/login/page.css"
-    ],
     "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page": [
       "static/css/app/page.css"
-=======
-    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/page": [
-      "static/css/app/login/page.css"
->>>>>>> a37c7da4b8b46633437a04fbb84434724c0d7533
     ],
-    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/layout": [
+    "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\layout": [
       "static/css/_app-client_app_globals_css.css"
     ]
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/client/components/app-router.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\client\\components\\app-router.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/app-router.js",
       "name": "",
@@ -203,7 +166,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/esm/client/components/app-router.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\esm\\client\\components\\app-router.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/app-router.js",
       "name": "",
@@ -229,7 +192,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/client/components/error-boundary.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\client\\components\\error-boundary.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/error-boundary.js",
       "name": "",
@@ -255,7 +218,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/esm/client/components/error-boundary.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\esm\\client\\components\\error-boundary.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/error-boundary.js",
       "name": "",
@@ -281,7 +244,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/client/components/layout-router.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\client\\components\\layout-router.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/layout-router.js",
       "name": "",
@@ -307,7 +270,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/esm/client/components/layout-router.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\esm\\client\\components\\layout-router.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/layout-router.js",
       "name": "",
@@ -333,7 +296,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/client/components/render-from-template-context.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\client\\components\\render-from-template-context.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js",
       "name": "",
@@ -359,7 +322,7 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/node_modules/next/dist/esm/client/components/render-from-template-context.js": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\node_modules\\next\\dist\\esm\\client\\components\\render-from-template-context.js": {
     "": {
       "id": "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js",
       "name": "",
@@ -381,85 +344,55 @@ self.__RSC_MANIFEST={
       "name": "default",
       "chunks": [
         "app-client-internals:app-client-internals"
-      ],
-      "async": false
-    }
-  },
-<<<<<<< HEAD
-  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\login\\login.module.scss": {
-    "default": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/login/page.css"
-      ]
-    }
-  },
-  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\login\\page.jsx": {
-    "": {
-      "id": "(app-client)/./app/login/page.jsx",
-      "name": "",
-      "chunks": [
-        "app/login/page:app/login/page"
-      ],
-      "async": false
-    },
-    "*": {
-      "id": "(app-client)/./app/login/page.jsx",
-      "name": "*",
-      "chunks": [
-        "app/login/page:app/login/page"
-      ],
-      "async": false
-    },
-    "default": {
-      "id": "(app-client)/./app/login/page.jsx",
-      "name": "default",
-      "chunks": [
-        "app/login/page:app/login/page"
       ],
       "async": false
     }
   },
   "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\component\\CreateCLForm.module.scss": {
-=======
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/login.module.scss": {
->>>>>>> a37c7da4b8b46633437a04fbb84434724c0d7533
     "default": {
       "id": "null",
       "name": "default",
       "chunks": [
-        "static/css/app/login/page.css"
+        "static/css/app/page.css"
       ]
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/page.jsx": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/page.css"
+      ]
+    }
+  },
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\page.jsx": {
     "": {
-      "id": "(app-client)/./app/login/page.jsx",
+      "id": "(app-client)/./app/page.jsx",
       "name": "",
       "chunks": [
-        "app/login/page:app/login/page"
+        "app/page:app/page"
       ],
       "async": false
     },
     "*": {
-      "id": "(app-client)/./app/login/page.jsx",
+      "id": "(app-client)/./app/page.jsx",
       "name": "*",
       "chunks": [
-        "app/login/page:app/login/page"
+        "app/page:app/page"
       ],
       "async": false
     },
     "default": {
-      "id": "(app-client)/./app/login/page.jsx",
+      "id": "(app-client)/./app/page.jsx",
       "name": "default",
       "chunks": [
-        "app/login/page:app/login/page"
+        "app/page:app/page"
       ],
       "async": false
     }
   },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/globals.css": {
+  "C:\\Users\\wing_\\Programming\\coverletter-gen\\app\\globals.css": {
     "default": {
       "id": "null",
       "name": "default",
