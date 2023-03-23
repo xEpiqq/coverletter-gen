@@ -1,3 +1,170 @@
-.black {
+.page {
+  width: 100vw;
+  height: 100vh;
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  color: black;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  font-family: "Lexend Deca", sans-serif;
+  color: #000000;
+
+  width: 100%;
+  max-width: 1500px;
+  padding: 0;
+  margin: 0;
+
+  * {
     color: black;
+  }
+}
+
+.login {
+  margin-top: 5rem;
+  h1 {
+    font-size: 2rem;
+    font-family: "Lexend Deca";
+    font-weight: 500;
+    margin: 0rem;
+    padding: 0;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-family: "Lexend Deca";
+    font-weight: 300;
+    margin: 0rem;
+    margin-top: 1rem;
+    padding: 0;
+
+    a {
+        color: #5551FF;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+  }
+
+  .login_buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1rem;
+    margin-top: 2rem;
+    button {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+
+      background-color: white;
+      border: 3px solid black;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+
+      border-radius: 0.5rem;
+
+      width: 20rem;
+
+      font-family: "Lexend Deca";
+      font-weight: 500;
+
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: #fadc9e;
+      }
+
+        &:active {
+            background-color: #ffecbc;
+        }
+    }
+  }
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1rem;
+  align-items: center;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  top: 0;
+  left: 0;
+  align-self: flex-start;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  h1 {
+    color: black;
+
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 1.5rem;
+  }
+}
+
+.gradient_background {
+  background: linear-gradient(125.1deg, #fadc9e 0.9%, #d27653 100.87%);
+
+  position: absolute;
+  top: 70%;
+
+  width: 200vw;
+  height: 100rem;
+
+  border-radius: 50%;
+
+  // center
+  left: 50%;
+  transform: translateX(-50%);
+
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .home {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .gradient_background {
+    width: 100rem;
+  }
+}
+
+@media (max-height: 768px) {
+  .gradient_background {
+    display: none;
+  }
 }
