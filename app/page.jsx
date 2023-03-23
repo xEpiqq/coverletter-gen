@@ -10,7 +10,7 @@ import {
   GoogleAuthProvider,
   signOut,
 } from "firebase/auth";
-import { app } from "./component/FirebaseApp.jsx";
+import app from "./component/FirebaseApp";
 import CreateCLForm from "./component/CreateCLForm";
 import { useRouter } from "next/navigation";
 import { Typewriter } from "react-simple-typewriter";
@@ -145,7 +145,7 @@ function Page() {
               <h5>
                 By harnessing the power of GPT-3.5, you can create 
                 cover letters that are both impressive and tailored to the
-                specific requirements of the job you're applying for. GPT-3.5
+                specific requirements of the job youre applying for. GPT-3.5
                 can help you identify keywords and phrases that will catch the
                 attention of hiring managers, and suggest powerful and
                 persuasive language to help you stand out from the crowd.

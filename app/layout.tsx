@@ -8,11 +8,6 @@ export const metadata = {
   icons: {
     icon: "/logo_background.svg",
     shortcut: "/logo_background.svg",
-    apple: "/favicon.ico",
-    other: {
-      rel: "apple-touch-icon-precomposed",
-      url: "http://localhost:3000/favicon.ico",
-    },
   },
 
   // index the page
