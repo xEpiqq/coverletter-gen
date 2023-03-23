@@ -61,14 +61,13 @@ function Page() {
 
   return (
     <div className={s.page}>
-      <div className={s.gradient_background}>
-      </div>
-        <div className={s.circle_transition} />
+      <div className={s.gradient_background}></div>
+      <div className={s.circle_transition} />
       <div className={s.circle_transition} />
       <div className={s.home}>
         <div className={s.navbar}>
           <div className={s.logo}>
-            <img src="/logo.svg" />
+            <img alt="logo" src="/logo.svg" />
             <h3>GPTCOVERLETTER</h3>
           </div>
           <div className={s.login}>
@@ -117,7 +116,7 @@ function Page() {
               </div>
             </div>
             <div className={s.home_right}>
-              <img src="/computer_city.png" />
+              <img alt="computer city scape" src="/computer_city.png" />
             </div>
           </div>
         </div>
@@ -132,14 +131,24 @@ function Page() {
 
           <div className={s.gpt_tech_showcase_container}>
             <div className={s.gpt_tech_showcase_img}>
-              <img src="/happy_man.png" />
+              <img alt="happy excited man" src="/happy_man.png" />
             </div>
             <div className={s.gpt_tech_showcase_text}>
-              <h1>Stable Diffusion 2.0</h1>
+              <h1>GPT 3.5</h1>
               <h5>
-                Get involved with the fastest growing open software project.
-                Download and join other developers in creating incredible
-                applications with stable diffusion as a foundation model.
+                Get involved with one of the most powerful language models in
+                the world and take your job search to the next level. With
+                GPT-3.5, you have access to advanced natural language processing
+                capabilities that can help you craft the perfect 
+                cover letter.
+              </h5>
+              <h5>
+                By harnessing the power of GPT-3.5, you can create 
+                cover letters that are both impressive and tailored to the
+                specific requirements of the job you're applying for. GPT-3.5
+                can help you identify keywords and phrases that will catch the
+                attention of hiring managers, and suggest powerful and
+                persuasive language to help you stand out from the crowd.
               </h5>
             </div>
           </div>
@@ -152,7 +161,7 @@ function Page() {
           <h2>wing.b.david@gmail.com</h2>
         </div>
         <div className={s.early_access_banner}>
-          <img src="/logo.svg" />
+          <img alt="logo" src="/logo.svg" />
           <h1>
             GPTCOVERLETTER <span>early access</span>
           </h1>
