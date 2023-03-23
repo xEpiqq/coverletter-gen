@@ -80,6 +80,7 @@
       width: 90%;
 
       .text_box {
+
         button {
           width: 100%;
           right: 0;
@@ -101,6 +102,19 @@
     padding-right: 0;
     padding-bottom: 0;
   }
+}
+
+
+.circle_transition {
+  position: absolute;
+  left: 20vw;
+  bottom: -20vw;
+  width: 100vw;
+  height: 50vw;
+  background-color: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
 }
 
 .home_first {
@@ -137,6 +151,16 @@
     border: 7px solid #000000;
     box-shadow: 25px 25px 50px 25px rgba(0, 0, 0, 0.25);
     border-radius: 23px;
+    // stop it from resizing when the text is too long
+    
+
+    color: black;
+
+    padding: 1rem;
+
+    span {
+      color: black;
+    }
 
     button {
       background: #362f3a;
@@ -209,6 +233,10 @@
   font-size: 1.5rem;
   font-weight: bold;
 
+  margin-left: 2rem;
+
+  transform: translate(0, -0.5rem);
+
   padding-top: 1rem;
   h3 {
     color: #000000;
@@ -280,6 +308,8 @@
 .home_second {
   height: 92vh;
   width: 100%;
+
+  z-index: 3;
 
   h1 {
     font-family: "Lexend Deca";

@@ -13,6 +13,11 @@ import {
 import { app } from "./component/FirebaseApp.jsx";
 import CreateCLForm from "./component/CreateCLForm";
 import { useRouter } from "next/navigation";
+import { Typewriter } from "react-simple-typewriter";
+
+const ipsum_words = [
+  "Dear Hiring Manager, \nI am writing to express my interest in the open position at your company. My name is John Doe and I believe that my skills and experience make me a strong candidate for the role. I am an experienced professional with a proven track record of success in the industry. \nIn my previous role at XYZ Company, I was responsible for managing a team of professionals and overseeing the implementation of several successful projects. I have extensive experience in project management, strategic planning, and team leadership. I am confident that my skills and experience would be a valuable asset to your team.\n I hold a Bachelor's degree in Business Administration from ABC University and have completed several professional development courses in ",
+];
 
 function Page() {
   const current_movies = [];
@@ -56,7 +61,9 @@ function Page() {
 
   return (
     <div className={s.page}>
-      <div className={s.gradient_background} />
+      <div className={s.gradient_background}>
+      </div>
+        <div className={s.circle_transition} />
       <div className={s.circle_transition} />
       <div className={s.home}>
         <div className={s.navbar}>
@@ -69,10 +76,18 @@ function Page() {
               <h1 style={{ marginLeft: "4rem" }}>USER</h1>
             ) : (
               <div className={s.login_button_container}>
-                <button className={s.create_account_button} onClick={() => router.push('/login?signup=true')}>
+                <button
+                  className={s.create_account_button}
+                  onClick={() => router.push("/login?signup=true")}
+                >
                   CREATE AN ACCOUNT
                 </button>
-                <button className={s.login_button} onClick={() => router.push('/login?signup=false')}>LOGIN</button>
+                <button
+                  className={s.login_button}
+                  onClick={() => router.push("/login?signup=false")}
+                >
+                  LOGIN
+                </button>
               </div>
             )}
           </div>
@@ -87,6 +102,17 @@ function Page() {
                 LETTERS IN <span>9</span> SECONDS
               </h1>
               <div className={s.text_box}>
+                <span>
+                  <Typewriter
+                    words={ipsum_words}
+                    loop={5}
+                    cursor
+                    cursorStyle="_"
+                    typeSpeed={40}
+                    deleteSpeed={10}
+                    delaySpeed={1000}
+                  />
+                </span>
                 <button>use full version</button>
               </div>
             </div>
@@ -127,7 +153,9 @@ function Page() {
         </div>
         <div className={s.early_access_banner}>
           <img src="/logo.svg" />
-          <h1>GPTCOVERLETTER <span>early access</span></h1>
+          <h1>
+            GPTCOVERLETTER <span>early access</span>
+          </h1>
           <h2>generative ai for your job search</h2>
         </div>
       </div>
