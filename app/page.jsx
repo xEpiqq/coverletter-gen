@@ -136,13 +136,6 @@ function Page() {
             <div className={s.gpt_tech_showcase_text}>
               <h1>GPT 3.5</h1>
               <h5>
-                Get involved with one of the most powerful language models in
-                the world and take your job search to the next level. With
-                GPT-3.5, you have access to advanced natural language processing
-                capabilities that can help you craft the perfect 
-                cover letter.
-              </h5>
-              <h5>
                 By harnessing the power of GPT-3.5, you can create 
                 cover letters that are both impressive and tailored to the
                 specific requirements of the job youre applying for. GPT-3.5
