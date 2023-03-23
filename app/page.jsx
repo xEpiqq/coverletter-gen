@@ -63,7 +63,7 @@ function Page() {
             <h3>GPTCOVERLETTER</h3>
           </div>
           <div className={s.login}>
-            {!user ? (
+            {user ? (
               <h1 style={{ marginLeft: "4rem" }}>USER</h1>
             ) : (
               <div className={s.login_button_container}>
