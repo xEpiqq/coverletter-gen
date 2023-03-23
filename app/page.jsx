@@ -3,9 +3,7 @@ import React from 'react'
 import s from './page.module.scss'
 import { useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
-import { app } from '../component/FirebaseApp.jsx'
 import CreateCLForm from './component/CreateCLForm'
 
 function Page() {

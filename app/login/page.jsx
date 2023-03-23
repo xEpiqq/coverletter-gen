@@ -6,7 +6,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getFirestore, collection, addDoc, setDoc, doc, getDoc  } from "firebase/firestore";
-import { app } from '../component/FirebaseApp.jsx'
+import { app }  from '../component/FirebaseApp'
 
 ///////////////////////////////////////////////////////////////
 //CONSIDER USING FIREBASE REDIRECT ON MOBILE INSTEAD OF POPUP//
@@ -19,7 +19,7 @@ function Login() {
   const [user, loading, error] = useAuthState(auth);
 
   async function createFirestoreUser(user_id, displayname, email) {
-    const userRef = doc(db, "Users", user_id);
+    const userRef = doc(db, "users", user_id);
     const userDoc = await getDoc(userRef);
   
     if (userDoc.exists()) {

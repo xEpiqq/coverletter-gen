@@ -104,6 +104,32 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
+    "(app-client)/./app/page.jsx": {
+      "": {
+        "id": "(sc_client)/./app/page.jsx",
+        "name": "",
+        "chunks": [
+          "app/page:app/page"
+        ],
+        "async": false
+      },
+      "*": {
+        "id": "(sc_client)/./app/page.jsx",
+        "name": "*",
+        "chunks": [
+          "app/page:app/page"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/page.jsx",
+        "name": "default",
+        "chunks": [
+          "app/page:app/page"
+        ],
+        "async": false
+      }
+    },
     "(app-client)/./app/login/page.jsx": {
       "": {
         "id": "(sc_client)/./app/login/page.jsx",
@@ -133,6 +159,9 @@ self.__RSC_MANIFEST={
   },
   "__edge_ssr_module_mapping__": {},
   "__entry_css_files__": {
+    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page": [
+      "static/css/app/page.css"
+    ],
     "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/page": [
       "static/css/app/login/page.css"
     ],
@@ -344,6 +373,50 @@ self.__RSC_MANIFEST={
       "name": "default",
       "chunks": [
         "app-client-internals:app-client-internals"
+      ],
+      "async": false
+    }
+  },
+  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/component/CreateCLForm.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/page.css"
+      ]
+    }
+  },
+  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/page.css"
+      ]
+    }
+  },
+  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.jsx": {
+    "": {
+      "id": "(app-client)/./app/page.jsx",
+      "name": "",
+      "chunks": [
+        "app/page:app/page"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./app/page.jsx",
+      "name": "*",
+      "chunks": [
+        "app/page:app/page"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./app/page.jsx",
+      "name": "default",
+      "chunks": [
+        "app/page:app/page"
       ],
       "async": false
     }
