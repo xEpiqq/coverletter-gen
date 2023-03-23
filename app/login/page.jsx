@@ -18,7 +18,7 @@ import {
   doc,
   getDoc,
 } from "firebase/firestore";
-import app from "../component/FirebaseApp";
+import app from "./component/FirebaseApp";
 import { useRouter } from "next/navigation";
 
 ///////////////////////////////////////////////////////////////
