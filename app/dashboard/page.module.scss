@@ -1,0 +1,236 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  background-color: #242424;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.navbar {
+  background-color: #2e2e2e;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  .navbar_left {
+    img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  .navbar_center {
+    h1 {
+      color: #03d8ae;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+  }
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.content_left,
+.content_center,
+.content_right {
+  height: 100%;
+}
+
+.content_left {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: black;
+
+  .content_left_top {
+    width: 100%;
+
+    button {
+      width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+      height: 2rem;
+      border-radius: 3px;
+      margin-top: 1rem;
+
+      background-color: transparent;
+
+      // give me a border
+      border: 1px solid #03d8ae;
+    }
+  }
+
+  .content_left_middle {
+    width: 100%;
+    .cover_letter_selector_container {
+      display: flex;
+      flex-direction: column;
+
+      width: 100%;
+      .cover_letter_selector_button {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2rem;
+
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        height: 2rem;
+        border-radius: 3px;
+        margin-top: 1rem;
+
+        color: #fff;
+        font-size: 0.7rem;
+
+        white-space: nowrap;
+        background-color: transparent;
+
+        &:hover {
+          border: 1px solid #03d8ae;
+
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  hr {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #03d8ae;
+  }
+  .content_left_bottom {
+    width: 100%;
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 1rem;
+      .logout_button,
+      .subscription_button {
+        background-color: transparent;
+        color: #fff;
+        font-size: 0.7rem;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        height: 2rem;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+.content_center {
+  flex: 3.5;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  .content_center_textbox {
+    width: 90%;
+    flex: 1;
+    background-color: #282828;
+    margin: 5%;
+    margin-bottom: 0;
+
+    textarea {
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      color: #fff;
+
+      // no border
+      border: none;
+
+      // disable resize
+      resize: none;
+    }
+  }
+
+  .content_center_input_container {
+    width: 90%;
+    flex: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+    height: 4rem;
+
+    input {
+      width: 100%;
+      height: 2rem;
+      color: #fff;
+
+      // no border
+      background: #111111;
+      border: 1.2px solid #444444;
+      border-radius: 7px;
+      padding-left: 0.5rem;
+    }
+
+    button {
+      background-color: #111111;
+      border: 1.2px solid #03d8ae;
+      height: 2rem;
+      border-radius: 7px;
+      color: #03d8ae;
+      font-size: 0.7rem;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+}
+
+.content_right {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  .content_right_input {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+
+    background: #2d2d2d;
+    border: 1.5px solid #414243;
+    border-radius: 4px;
+  }
+}
