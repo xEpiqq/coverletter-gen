@@ -14,21 +14,22 @@ export async function POST(request) {
 
   const { body } = request;
   const {
-    jobTitle = "",
-    location = "",
-    jobDescription = "",
+    title,
+    location,
+    description,
+    company,
     cv_pdf,
     creativityLevel = "",
   } = body;
 
   var cv_text = "";
 
-  console.log("cv_pdf", cv_pdf);
+  console.log("cv_pdf", jobTitle);
 
   try {
     const model = "gpt-3.5-turbo";
 
-    const prompt = `I am applying for the position of ${jobTitle} at ${location}. I have attached my CV and cover letter for your consideration. I am a highly motivated and enthusiastic individual who is passionate about ${jobDescription}. I have a strong background in ${cv_text}. I am a ${creativityLevel}. Please create a cover letter for me.`;
+    const prompt = `I am applying for the position of ${title} at ${location} for the company ${company}. I have attached my CV and cover letter for your consideration. I am a highly motivated and enthusiastic individual who is passionate about ${description}. I have a strong background in ${cv_text}. I am a ${creativityLevel}. Please create a cover letter for me.`;
 
     //return new Response(JSON.stringify({data: prompt}));
 
