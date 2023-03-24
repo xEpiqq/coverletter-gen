@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 
-import s from "./page.module.scss";
+import s from "./dashboard.module.scss";
 import { useState } from "react";
 
-export default function Page() {
+export default function Dashboard() {
   const [openLetter, setOpenLetter] = useState(false);
   const [coverLetterOptions, setCoverLetterOptions] = useState([
     "My First Cover Letter",
