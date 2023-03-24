@@ -6,7 +6,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getFirestore, collection, addDoc, setDoc, doc, getDoc  } from "firebase/firestore";
-import { app }  from '../component/FirebaseApp'
+import app  from '../component/FirebaseApp'
 
 ///////////////////////////////////////////////////////////////
 //CONSIDER USING FIREBASE REDIRECT ON MOBILE INSTEAD OF POPUP//

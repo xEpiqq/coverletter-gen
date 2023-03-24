@@ -4,10 +4,6 @@ self.__RSC_CSS_MANIFEST={
       "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/globals.css",
       "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/component/CreateCLForm.module.scss",
       "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.module.scss"
-    ],
-    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/page": [
-      "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/globals.css",
-      "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/login.module.scss"
     ]
   },
   "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page.jsx": [
@@ -16,8 +12,5 @@ self.__RSC_CSS_MANIFEST={
   ],
   "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/layout.tsx": [
     "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/globals.css"
-  ],
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/page.jsx": [
-    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/login.module.scss"
   ]
 }

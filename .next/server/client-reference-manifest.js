@@ -129,41 +129,12 @@ self.__RSC_MANIFEST={
         ],
         "async": false
       }
-    },
-    "(app-client)/./app/login/page.jsx": {
-      "": {
-        "id": "(sc_client)/./app/login/page.jsx",
-        "name": "",
-        "chunks": [
-          "app/login/page:app/login/page"
-        ],
-        "async": false
-      },
-      "*": {
-        "id": "(sc_client)/./app/login/page.jsx",
-        "name": "*",
-        "chunks": [
-          "app/login/page:app/login/page"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./app/login/page.jsx",
-        "name": "default",
-        "chunks": [
-          "app/login/page:app/login/page"
-        ],
-        "async": false
-      }
     }
   },
   "__edge_ssr_module_mapping__": {},
   "__entry_css_files__": {
     "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/page": [
       "static/css/app/page.css"
-    ],
-    "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/page": [
-      "static/css/app/login/page.css"
     ],
     "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/layout": [
       "static/css/_app-client_app_globals_css.css"
@@ -417,41 +388,6 @@ self.__RSC_MANIFEST={
       "name": "default",
       "chunks": [
         "app/page:app/page"
-      ],
-      "async": false
-    }
-  },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/login.module.scss": {
-    "default": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/login/page.css"
-      ]
-    }
-  },
-  "/home/jayden/Desktop/gptcoverletter/gptcoverletter/app/login/page.jsx": {
-    "": {
-      "id": "(app-client)/./app/login/page.jsx",
-      "name": "",
-      "chunks": [
-        "app/login/page:app/login/page"
-      ],
-      "async": false
-    },
-    "*": {
-      "id": "(app-client)/./app/login/page.jsx",
-      "name": "*",
-      "chunks": [
-        "app/login/page:app/login/page"
-      ],
-      "async": false
-    },
-    "default": {
-      "id": "(app-client)/./app/login/page.jsx",
-      "name": "default",
-      "chunks": [
-        "app/login/page:app/login/page"
       ],
       "async": false
     }
