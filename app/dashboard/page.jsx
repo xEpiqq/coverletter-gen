@@ -100,17 +100,25 @@ export default function Page() {
           </div>
         </div>
         <div className={s.content_right}>
-            <h2>Details</h2>
-          <input className={s.content_right_input} />
-          <input className={s.content_right_input} />
-          <input className={s.content_right_input} />
-          <input className={s.content_right_input_textbox} />
+          <h2>Details</h2>
+          <label htmlFor="Job input">Job</label>
+          <input id="Job input" className={s.content_right_input} />
+          <label htmlFor="Company input">Company</label>
+          <input id="Company input" className={s.content_right_input} />
+          <label htmlFor="Location input">Location</label>
+          <input id="Location input" className={s.content_right_input} />
+          <label id="Job Description input">Paste the job description here</label>
+          <textarea id="Job Description input" className={s.content_right_input_textbox} />
+          The creativity meter
           <div className={s.content_right_meter} />
           <div className={s.content_right_bottom}>
-            <button className={s.upload_resume_button}>UPLOAD RESUME</button>
             <div className={s.nothing_attached_text}>
               Nothing currently attached
             </div>
+            <label className={s.upload_resume_button}>
+              <input type="file" />
+              <p>Upload CV</p>
+            </label>
           </div>
         </div>
       </div>

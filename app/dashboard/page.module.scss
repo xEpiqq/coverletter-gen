@@ -79,6 +79,11 @@
 
       // give me a border
       border: 1px solid #03d8ae;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #222;
+      }
     }
   }
 
@@ -95,6 +100,9 @@
         justify-content: flex-start;
         align-items: center;
         gap: 2rem;
+
+        // no border
+        border: none;
 
         width: 90%;
         margin-left: 5%;
@@ -144,6 +152,12 @@
         margin-right: 5%;
         height: 2rem;
         border-radius: 3px;
+        border: none;
+
+        &:hover {
+          border: 1px solid #03d8ae;
+          cursor: pointer;
+        }
       }
     }
   }
@@ -217,20 +231,90 @@
 }
 
 .content_right {
-  flex: 2;
+  flex: 1.5;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  margin-right: 3rem;
   width: 100%;
 
   .content_right_input {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
 
     background: #2d2d2d;
     border: 1.5px solid #414243;
     border-radius: 4px;
+
+    width: 100%;
+
+    height: 2.5rem;
+
+    font-size: 1.5rem;
+  }
+
+  .content_right_input_textbox {
+
+    background: #2d2d2d;
+    border: 1.5px solid #414243;
+    border-radius: 4px;
+
+    height: 25%;
+    width: 100%;
+
+    resize: none;
+
+    font-size: 1.5rem;
+  }
+
+  .content_right_bottom {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2rem;
+
+    display: flex;  
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .upload_resume_button {
+    background-color: #03d8ae;
+    color: #fff;
+    font-size: 0.7rem;
+    width: 100%;
+    height: 2rem;
+    border-radius: 5px;
+    border: none;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      display: none;
+    }
+
+    &:hover {
+      border: 1px solid #03d8ae;
+      cursor: pointer;
+    }
+  }
+
+  .nothing_attached_text {
+    color: #fff;
+    font-size: 0.7rem;
+    width: 100%;
+    height: 2rem;
+    border-radius: 5px;
+    border: none;
+    border: 1px solid #4C4D4F;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 }
