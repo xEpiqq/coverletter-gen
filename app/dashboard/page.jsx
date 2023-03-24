@@ -51,7 +51,7 @@ export default function Page() {
               className={s.new_cover_letter_button}
               onClick={(e) => createCoverLetter(e)}
             >
-              + New Cover Letter
+              {"+ New Cover Letter"}
             </button>
           </div>
           <div className={s.content_left_middle}>
