@@ -4,6 +4,8 @@ import React from "react";
 import s from "./dashboard.module.scss";
 import { useState } from "react";
 
+import pdfjsLib from "pdfjs-dist";
+
 export default function Dashboard() {
   const [openLetter, setOpenLetter] = useState(false);
   const [coverLetterOptions, setCoverLetterOptions] = useState([
@@ -16,6 +18,7 @@ export default function Dashboard() {
   const [jobCompany, setJobCompany] = useState("");
   const [jobLocation, setJobLocation] = useState("");
   const [jobDescription, setJobDescription] = useState("");
+  const [resumePdf, setResumePdf] = useState("");
   const [creativityMeter, setCreativityMeter] = useState(0);
   const [letterText, setLetterText] = useState("");
 
@@ -29,6 +32,62 @@ export default function Dashboard() {
 
   const generateCoverLetter = (e) => {
     // TODO: Generate cover letter
+  };
+
+  const pdfUpload = (e) => {
+    function extractTextFromPDF(pdfFile) {
+      // Load the PDF file as an array buffer
+      pdfjsLib.getDocument(url).promise.then(function (pdf) {
+        return pdfjsLib
+          .getDocument({ data: pdfFile })
+          .promise.then(function (pdf) {
+            // Get the number of pages in the PDF
+            var numPages = pdf.numPages;
+
+            // Initialize an array to hold the text for each page
+            var pagesText = [];
+
+            // Loop through each page of the PDF
+            for (var i = 1; i <= numPages; i++) {
+              // Get the page object
+              var page = pdf.getPage(i);
+
+              // Get the text content of the page using a Promise
+              pagesText.push(
+                page.getTextContent().then(function (textContent) {
+                  // Combine the text items into a single string
+                  return textContent.items
+                    .map(function (item) {
+                      return item.str;
+                    })
+                    .join("");
+                })
+              );
+            }
+
+            // Wait for all pages to be processed
+            return Promise.all(pagesText);
+          })
+          .then(function (pagesText) {
+            // Combine the text from all pages into a single string
+            return pagesText.join("\n");
+          });
+        // Your code here
+      });
+    }
+
+    // Usage example
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const fileReader = new FileReader();
+      fileReader.onload = function (e) {
+        const pdfFile = e.target.result;
+        extractTextFromPDF(pdfFile).then(function (text) {
+          console.log(text);
+        });
+      };
+      fileReader.readAsArrayBuffer(file);
+    }
   };
 
   return (
@@ -140,7 +199,11 @@ export default function Dashboard() {
               Nothing currently attached
             </div>
             <label className={s.upload_resume_button}>
-              <input type="file" />
+              <input
+                type="file"
+                accept="application/pdf"
+                onChange={(e) => pdfUpload(e)}
+              />
               Upload CV
             </label>
           </div>
