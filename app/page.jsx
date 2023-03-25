@@ -104,7 +104,7 @@ function Page() {
                 <span>
                   <Typewriter
                     words={ipsum_words}
-                    loop={5}
+                    loop
                     cursor
                     cursorStyle="_"
                     typeSpeed={40}
