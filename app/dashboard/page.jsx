@@ -47,9 +47,7 @@ export default function Dashboard() {
       <div className={s.content}>
         <div className={s.content_left}>
           <div className={s.content_left_top}>
-            <button
-              onClick={(e) => createCoverLetter(e)}
-            >
+            <button onClick={(e) => createCoverLetter(e)}>
               {"+ New Cover Letter"}
             </button>
           </div>
@@ -97,11 +95,7 @@ export default function Dashboard() {
               onChange={(e) => setAdditionalInstructions(e.target.value)}
             />
 
-            <button
-              onClick={(e) => generateCoverLetter(e)}
-            >
-              GO!
-            </button>
+            <button onClick={(e) => generateCoverLetter(e)}>GO!</button>
           </div>
         </div>
         <div className={s.content_right}>
@@ -146,7 +140,7 @@ export default function Dashboard() {
             </div>
             <label className={s.upload_resume_button}>
               <input type="file" />
-              <p>Upload CV</p>
+              Upload CV
             </label>
           </div>
         </div>
