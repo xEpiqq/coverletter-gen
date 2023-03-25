@@ -48,7 +48,6 @@ export default function Dashboard() {
         <div className={s.content_left}>
           <div className={s.content_left_top}>
             <button
-              className={s.new_cover_letter_button}
               onClick={(e) => createCoverLetter(e)}
             >
               {"+ New Cover Letter"}
@@ -84,7 +83,6 @@ export default function Dashboard() {
         <div className={s.content_center}>
           <div className={s.content_center_textbox}>
             <textarea
-              className={s.content_center_textbox_input}
               type="text"
               placeholder=""
               value={letterText}
@@ -100,7 +98,6 @@ export default function Dashboard() {
             />
 
             <button
-              className={s.content_center_button}
               onClick={(e) => generateCoverLetter(e)}
             >
               GO!
@@ -142,7 +139,6 @@ export default function Dashboard() {
               id="Creativity input"
               onChange={(e) => setCreativityMeter(e.target.value)}
             />
-            <div className={s.content_right_meter} />
           </div>
           <div className={s.content_right_bottom}>
             <div className={s.nothing_attached_text}>
