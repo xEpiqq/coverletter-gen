@@ -53,6 +53,17 @@ export default function Dashboard() {
           </div>
           <div className={s.content_left_middle}>
             <div className={s.cover_letter_selector_container}>
+              {coverLetterOptions.map((coverLetterOption, index) => {
+                return (
+                  <button
+                    className={s.cover_letter_selector_button}
+                    key={`coverLetterOption-${index}`}
+                  >
+                    <img src="/cover_letter_button_icon.svg" alt="logo" />
+                    {coverLetterOption}
+                  </button>
+                );
+              })}
             </div>
           </div>
           <div className={s.content_left_bottom}>
@@ -120,7 +131,6 @@ export default function Dashboard() {
               min="1"
               max="100"
               value={creativityMeter}
-              class="slider"
               id="Creativity input"
               onChange={(e) => setCreativityMeter(e.target.value)}
             />
