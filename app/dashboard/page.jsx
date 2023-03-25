@@ -53,14 +53,6 @@ export default function Dashboard() {
           </div>
           <div className={s.content_left_middle}>
             <div className={s.cover_letter_selector_container}>
-              {coverLetterOptions.map((coverLetterOption) => {
-                return (
-                  <button className={s.cover_letter_selector_button}>
-                    <img src="/cover_letter_button_icon.svg" alt="logo" />
-                    {coverLetterOption}
-                  </button>
-                );
-              })}
             </div>
           </div>
           <div className={s.content_left_bottom}>
