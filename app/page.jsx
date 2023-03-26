@@ -77,9 +77,9 @@ function Page() {
               <div className={s.login_button_container}>
                 <button
                   className={s.create_account_button}
-                  onClick={() => router.push("/login?signup=true")}
+                  onClick={() => router.push("/freetrial")}
                 >
-                  CREATE AN ACCOUNT
+                  Try For Free
                 </button>
                 <button
                   className={s.login_button}
