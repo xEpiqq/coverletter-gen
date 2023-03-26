@@ -82,6 +82,7 @@
       .text_box {
 
         button {
+
           width: 100%;
           right: 0;
           bottom: 0;
@@ -162,9 +163,13 @@
       color: black;
     }
 
+
     button {
       background: #362f3a;
       border-radius: 33px;
+
+      border: none;
+      outline: none;
 
       position: absolute;
       bottom: -1.5rem;
@@ -184,8 +189,14 @@
 
       // more text spacing
       letter-spacing: 0.1em;
+      transition: .2s;
+
 
       color: #ffffff;
+      &:hover {
+        border: 2px solid white;
+        cursor: pointer;
+      }
     }
   }
 }
@@ -238,6 +249,11 @@
   transform: translate(0, -0.5rem);
 
   padding-top: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
   h3 {
     color: #000000;
   }
@@ -256,18 +272,26 @@
 
 .create_account_button {
   // remove border
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   height: 2rem;
+  width: auto;
   background: #ffffff;
   border-radius: 43px;
   font-family: "Kodchasan", sans-serif;
-
+  font-size: 1.5rem;
   color: #362f3a;
-  padding: 0 1rem;
+  padding: 1.25rem 1.5rem;
+  transition: .2s;
 
   &:hover {
-    background: #f59875;
-    color: #ffffff;
+    background: #ffede7;
+    cursor: pointer;
+    border: 3px solid #362f3a;
+    transform: scale(1.05);
+
   }
 
   &:focus {
@@ -280,7 +304,12 @@
 }
 
 .login_button {
+  transition: .2s;
+
   // remove border
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0 1rem;
 
   border: none;
@@ -288,13 +317,19 @@
   background: #362f3a;
   border-radius: 43px;
   font-family: "Kodchasan", sans-serif;
-
+  font-size: 1rem;
   color: #ffffff;
-  padding: 0 1rem;
+  padding: 1.25rem 1.5rem;
+
 
   &:hover {
     background: #f59875;
     color: #ffffff;
+    cursor: pointer;
+    border: 3px solid white;
+    // translate 5px right
+    transform: scale(1.05);
+
   }
   &:focus {
     outline: none;
