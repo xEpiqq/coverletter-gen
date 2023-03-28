@@ -21,6 +21,7 @@ export default function Dashboard() {
   const [creativityMeter, setCreativityMeter] = useState(0);
   const [letterText, setLetterText] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const uploadResume = (e) => {};
 
@@ -47,7 +48,9 @@ export default function Dashboard() {
   };
 
   const generateCoverLetter = async (e) => {
-    console.log("sending to api");
+    if (loading) return;
+
+    setLoading(true);
 
     const data = {
       jobTitle,
@@ -73,6 +76,8 @@ export default function Dashboard() {
     setLetterText(json.data);
 
     if (!res.ok) throw Error(json.message);
+
+    setLoading(false);
   };
 
   return (
@@ -162,7 +167,7 @@ export default function Dashboard() {
               onChange={(e) => setAdditionalInstructions(e.target.value)}
             />
 
-            <button onClick={(e) => generateCoverLetter(e)}>GO!</button>
+            <button className={loading ? s.loading_button: null} onClick={(e) => generateCoverLetter(e)}>GO!</button>
           </div>
         </div>
         <div className={s.content_right}>
