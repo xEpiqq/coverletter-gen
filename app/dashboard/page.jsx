@@ -20,12 +20,17 @@ export default function Dashboard() {
   const [resumePdf, setResumePdf] = useState("");
   const [creativityMeter, setCreativityMeter] = useState(0);
   const [letterText, setLetterText] = useState("");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const uploadResume = (e) => {};
 
   const createCoverLetter = (e) => {
     setCoverLetterOptions([...coverLetterOptions, "New Cover Letter"]);
   };
+
+  const handleSidebar = (e) => {
+    setSidebarOpen(!sidebarOpen);
+  }
 
   const generateCoverLetter = async (e) => {
     console.log("sending to api")
@@ -61,6 +66,7 @@ export default function Dashboard() {
       <div className={s.navbar}>
         <div className={s.navbar_left}>
           <img src="/logo.svg" alt="logo" />
+          <img className={s.sidebar_toggle} src="/logo_background.svg" alt="logo" onClick={handleSidebar}/>
         </div>
         <div className={s.navbar_center}>
           <img src="/double_arrow_left.svg" alt="logo" />
@@ -70,8 +76,9 @@ export default function Dashboard() {
         <div className={s.navbar_right}>USER_PLACEHOLDER</div>
       </div>
       <div className={s.content}>
-        <div className={s.content_left}>
+        <div className={sidebarOpen ? s.content_left_open : s.content_left_closed}>
           <div className={s.content_left_top}>
+            {sidebarOpen && <button onClick={handleSidebar}>{"< Close"}</button>}
             <button onClick={(e) => createCoverLetter(e)}>
               {"+ New Cover Letter"}
             </button>
