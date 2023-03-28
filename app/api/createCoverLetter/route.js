@@ -26,8 +26,6 @@ export async function POST(request) {
 
     const prompt = `I am applying for the position of ${jobTitle} at ${jobCompany} in ${jobLocation}. I am excited to work with you and your team. ${additionalInstructions}`;
 
-    //return new Response(JSON.stringify({data: prompt}));
-
     const completion = await openai.createChatCompletion({
       model: model,
       messages: [{ role: "system", content: prompt }],
