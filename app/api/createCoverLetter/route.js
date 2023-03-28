@@ -8,7 +8,6 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export async function POST(request) {
-  console.log("createCoverLetter called");
 
   const { body } = request;
   const {
@@ -25,8 +24,6 @@ export async function POST(request) {
     const model = "gpt-3.5-turbo";
 
     const prompt = `I am applying for the position of ${jobTitle} at ${jobCompany} in ${jobLocation}. I am excited to work with you and your team. ${additionalInstructions}`;
-
-    //return new Response(JSON.stringify({data: prompt}));
 
     const completion = await openai.createChatCompletion({
       model: model,

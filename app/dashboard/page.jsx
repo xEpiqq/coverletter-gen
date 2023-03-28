@@ -2,14 +2,14 @@
 import React from "react";
 
 import s from "./dashboard.module.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Dashboard() {
-  const [openLetter, setOpenLetter] = useState(false);
+  const [openLetter, setOpenLetter] = useState(0);
   const [coverLetterOptions, setCoverLetterOptions] = useState([
-    "My First Cover Letter",
-    "My Second Cover Letter",
-    "My Third Cover Letter",
+    {title: "My First Cover Letter", content: "This is my first cover letter"},
+    {title: "My Second Cover Letter", content: "This is my second cover letter"},
+    {title: "My Third Cover Letter", content: "This is my third cover letter"},
   ]);
 
   const [jobTitle, setJobTitle] = useState("");
@@ -21,19 +21,36 @@ export default function Dashboard() {
   const [creativityMeter, setCreativityMeter] = useState(0);
   const [letterText, setLetterText] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const uploadResume = (e) => {};
 
+  useEffect(() => {
+    const res = fetch("/api/getUsersLetters", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(""),
+    }).then((res) => {
+      const json = res.json().then((json) => {
+        setCoverLetterOptions(json.data);
+      });
+    });
+  }, []);
+
   const createCoverLetter = (e) => {
-    setCoverLetterOptions([...coverLetterOptions, "New Cover Letter"]);
+    setCoverLetterOptions([...coverLetterOptions, {title: "New Cover Letter", content: "This is a new cover letter"}]);
   };
 
   const handleSidebar = (e) => {
     setSidebarOpen(!sidebarOpen);
-  }
+  };
 
   const generateCoverLetter = async (e) => {
-    console.log("sending to api")
+    if (loading) return;
+
+    setLoading(true);
 
     const data = {
       jobTitle,
@@ -56,9 +73,11 @@ export default function Dashboard() {
     const json = await res.json();
 
     console.log(json);
-    setLetterText(json.data)
+    setLetterText(json.data);
 
     if (!res.ok) throw Error(json.message);
+
+    setLoading(false);
   };
 
   return (
@@ -66,7 +85,12 @@ export default function Dashboard() {
       <div className={s.navbar}>
         <div className={s.navbar_left}>
           <img className={s.logo} src="/logo.svg" alt="logo" />
-          <img className={s.sidebar_toggle} src="/logo_background.svg" alt="logo" onClick={handleSidebar}/>
+          <img
+            className={s.sidebar_toggle}
+            src="/logo_background.svg"
+            alt="logo"
+            onClick={handleSidebar}
+          />
         </div>
         <div className={s.navbar_center}>
           <img src="/double_arrow_left.svg" alt="logo" />
@@ -76,9 +100,13 @@ export default function Dashboard() {
         <div className={s.navbar_right}>USER_PLACEHOLDER</div>
       </div>
       <div className={s.content}>
-        <div className={sidebarOpen ? s.content_left_open : s.content_left_closed}>
+        <div
+          className={sidebarOpen ? s.content_left_open : s.content_left_closed}
+        >
           <div className={s.content_left_top}>
-            {sidebarOpen && <button onClick={handleSidebar}>{"< Close"}</button>}
+            {sidebarOpen && (
+              <button onClick={handleSidebar}>{"< Close"}</button>
+            )}
             <button onClick={(e) => createCoverLetter(e)}>
               {"+ New Cover Letter"}
             </button>
@@ -90,9 +118,10 @@ export default function Dashboard() {
                   <button
                     className={s.cover_letter_selector_button}
                     key={`coverLetterOption-${index}`}
+                    onClick={(e) => {setOpenLetter(index); setLetterText(coverLetterOption.content)}}
                   >
                     <img src="/cover_letter_button_icon.svg" alt="logo" />
-                    {coverLetterOption}
+                    {coverLetterOption.title}
                   </button>
                 );
               })}
@@ -117,8 +146,17 @@ export default function Dashboard() {
             <textarea
               type="text"
               placeholder=""
-              value={letterText}
-              onChange={(e) => setLetterText(e.target.value)}
+              value={coverLetterOptions[openLetter].content}
+              onChange={(e) => setCoverLetterOptions(coverLetterOptions.map((coverLetterOption, index) => {
+                if (index === openLetter) {
+                  return {
+                    ...coverLetterOption,
+                    content: e.target.value
+                  }
+                } else {
+                  return coverLetterOption;
+                }
+              }))}
             />
           </div>
           <div className={s.content_center_input_container}>
@@ -129,7 +167,7 @@ export default function Dashboard() {
               onChange={(e) => setAdditionalInstructions(e.target.value)}
             />
 
-            <button onClick={(e) => generateCoverLetter(e)}>GO!</button>
+            <button className={loading ? s.loading_button: null} onClick={(e) => generateCoverLetter(e)}>GO!</button>
           </div>
         </div>
         <div className={s.content_right}>
