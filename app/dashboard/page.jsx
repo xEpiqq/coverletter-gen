@@ -65,7 +65,7 @@ export default function Dashboard() {
     <div className={s.page}>
       <div className={s.navbar}>
         <div className={s.navbar_left}>
-          <img src="/logo.svg" alt="logo" />
+          <img className={s.logo} src="/logo.svg" alt="logo" />
           <img className={s.sidebar_toggle} src="/logo_background.svg" alt="logo" onClick={handleSidebar}/>
         </div>
         <div className={s.navbar_center}>
