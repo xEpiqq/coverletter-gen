@@ -8,7 +8,6 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export async function POST(request) {
-  console.log("createCoverLetter called");
 
   const { body } = request;
   const {
