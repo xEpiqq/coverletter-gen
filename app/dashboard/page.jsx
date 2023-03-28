@@ -11,31 +11,56 @@ export default function Dashboard() {
     "My Second Cover Letter",
     "My Third Cover Letter",
   ]);
-  const [additionalInstructions, setAdditionalInstructions] = useState(false);
+
   const [jobTitle, setJobTitle] = useState("");
   const [jobCompany, setJobCompany] = useState("");
   const [jobLocation, setJobLocation] = useState("");
   const [jobDescription, setJobDescription] = useState("");
+  const [additionalInstructions, setAdditionalInstructions] = useState("");
+  const [resumePdf, setResumePdf] = useState("");
   const [creativityMeter, setCreativityMeter] = useState(0);
   const [letterText, setLetterText] = useState("");
 
-  const uploadResume = (e) => {
-    // TODO: Upload resume to database
-  };
+  const uploadResume = (e) => {};
 
   const createCoverLetter = (e) => {
     setCoverLetterOptions([...coverLetterOptions, "New Cover Letter"]);
   };
 
-  const generateCoverLetter = (e) => {
-    // TODO: Generate cover letter
+  const generateCoverLetter = async (e) => {
+    console.log("sending to api")
+
+    const data = {
+      jobTitle,
+      jobCompany,
+      jobLocation,
+      jobDescription,
+      additionalInstructions,
+      resumePdf,
+      creativityMeter,
+    };
+
+    const res = await fetch("/api/createCoverLetter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const json = await res.json();
+
+    console.log(json);
+    setLetterText(json.data)
+
+    if (!res.ok) throw Error(json.message);
   };
 
   return (
     <div className={s.page}>
       <div className={s.navbar}>
         <div className={s.navbar_left}>
-          <img src="/logo_green.svg" alt="logo" />
+          <img src="/logo.svg" alt="logo" />
         </div>
         <div className={s.navbar_center}>
           <img src="/double_arrow_left.svg" alt="logo" />
@@ -104,21 +129,38 @@ export default function Dashboard() {
           <h2>Details</h2>
           <div className={s.input_container}>
             <label htmlFor="Job input">Job Title</label>
-            <input id="Job input" className={s.content_right_input} />
+            <input
+              onChange={(e) => setJobTitle(e.target.value)}
+              value={jobTitle}
+              id="Job input"
+              className={s.content_right_input}
+            />
           </div>
           <div className={s.input_container}>
             <label htmlFor="Company input">Company</label>
-            <input id="Company input" className={s.content_right_input} />
+            <input
+              onChange={(e) => setJobCompany(e.target.value)}
+              value={jobCompany}
+              id="Company input"
+              className={s.content_right_input}
+            />
           </div>
           <div className={s.input_container}>
             <label htmlFor="Location input">Location</label>
-            <input id="Location input" className={s.content_right_input} />
+            <input
+              onChange={(e) => setJobLocation(e.target.value)}
+              value={jobLocation}
+              id="Location input"
+              className={s.content_right_input}
+            />
           </div>
           <div className={s.input_container_big}>
             <label id="Job Description input">
               Paste the job description here
             </label>
             <textarea
+              onChange={(e) => setJobDescription(e.target.value)}
+              value={jobDescription}
               id="Job Description input"
               className={s.content_right_input_textbox}
             />
@@ -140,7 +182,11 @@ export default function Dashboard() {
               Nothing currently attached
             </div>
             <label className={s.upload_resume_button}>
-              <input type="file" />
+              <input
+                type="file"
+                accept="application/pdf"
+                onChange={(e) => console.log("get this done!")}
+              />
               Upload CV
             </label>
           </div>

@@ -1,5 +1,3 @@
-import { sys } from "typescript";
-
 const { Configuration, OpenAIApi } = require("openai");
 
 // Create a new configuration object with your API key\
@@ -14,22 +12,19 @@ export async function POST(request) {
 
   const { body } = request;
   const {
-    title,
-    location,
-    description,
-    company,
-    cv_pdf,
-    creativityLevel = "",
+    jobTitle,
+    jobCompany,
+    jobLocation,
+    jobDescription,
+    additionalInstructions,
+    resumePdf,
+    creativityMeter,
   } = body;
-
-  var cv_text = "";
-
-  console.log("cv_pdf", jobTitle);
 
   try {
     const model = "gpt-3.5-turbo";
 
-    const prompt = `I am applying for the position of ${title} at ${location} for the company ${company}. I have attached my CV and cover letter for your consideration. I am a highly motivated and enthusiastic individual who is passionate about ${description}. I have a strong background in ${cv_text}. I am a ${creativityLevel}. Please create a cover letter for me.`;
+    const prompt = `I am applying for the position of ${jobTitle} at ${jobCompany} in ${jobLocation}. I am excited to work with you and your team. ${additionalInstructions}`;
 
     //return new Response(JSON.stringify({data: prompt}));
 
