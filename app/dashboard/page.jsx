@@ -6,7 +6,18 @@ import { useState, useEffect } from "react";
 
 import UserDropdown from "../component/UserDropdown";
 
+//imort signout
+import { signOut, getAuth } from "firebase/auth";
+
+import { useRouter } from "next/navigation";
+import { useAuthState } from "react-firebase-hooks/auth";
+
+import app from "../component/FirebaseApp";
+
 export default function Dashboard() {
+
+  const router = useRouter();
+
   const [openLetter, setOpenLetter] = useState(0);
   const [coverLetterOptions, setCoverLetterOptions] = useState([
     {
@@ -33,6 +44,9 @@ export default function Dashboard() {
   const [letterText, setLetterText] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const auth = getAuth();
+  const [user, loadingUser, error] = useAuthState(auth);
 
   const uploadResume = (e) => {};
 
@@ -94,6 +108,15 @@ export default function Dashboard() {
     setLoading(false);
   };
 
+
+  if (loadingUser) {
+    return <div>Loading...</div>;
+  }
+  
+  if (!auth.currentUser) {
+    router.push("/login");
+  }
+
   return (
     <div className={s.page}>
       <div className={s.gradient_background}></div>
@@ -113,7 +136,7 @@ export default function Dashboard() {
           <img src="/double_arrow_right.svg" alt="logo" />
         </div>
         <div className={s.navbar_right}>
-          <UserDropdown />
+          <UserDropdown user={user} />
         </div>
       </div>
       <div className={s.content}>
@@ -154,7 +177,7 @@ export default function Dashboard() {
                 <img src="/subscription_icon.svg" alt="logo" />
                 Subscription
               </button>
-              <button className={s.logout_button}>
+              <button className={s.logout_button} onClick={() => {signOut(auth); router.push('/')}}>
                 <img src="/logout_icon.svg" alt="logo" />
                 Logout
               </button>
