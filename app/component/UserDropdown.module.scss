@@ -1,0 +1,51 @@
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+    img {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+    }
+
+    &:hover .dropdown_menu {
+        display: block;
+    }
+
+}
+
+
+.dropdown_menu {
+    display: none;
+    position: absolute;
+
+    margin: 0;
+    padding: 1rem;
+    padding-left: 0;
+
+
+    z-index: 1000;
+
+    &:hover {
+        display: block;
+    }
+
+    li {
+        // should not be highlightable
+        user-select: none;
+
+        list-style: none;
+        padding: 1rem;
+        padding-left: 0;
+        padding-bottom: 0.3rem;
+        padding-top: 0.3rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+
+        &:hover {
+            // bigger
+            transform: scale(1.1);
+        }
+    }
+}

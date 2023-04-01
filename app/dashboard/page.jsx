@@ -4,12 +4,23 @@ import React from "react";
 import s from "./dashboard.module.scss";
 import { useState, useEffect } from "react";
 
+import UserDropdown from "../component/UserDropdown";
+
 export default function Dashboard() {
   const [openLetter, setOpenLetter] = useState(0);
   const [coverLetterOptions, setCoverLetterOptions] = useState([
-    {title: "My First Cover Letter", content: "This is my first cover letter"},
-    {title: "My Second Cover Letter", content: "This is my second cover letter"},
-    {title: "My Third Cover Letter", content: "This is my third cover letter"},
+    {
+      title: "My First Cover Letter",
+      content: "This is my first cover letter",
+    },
+    {
+      title: "My Second Cover Letter",
+      content: "This is my second cover letter",
+    },
+    {
+      title: "My Third Cover Letter",
+      content: "This is my third cover letter",
+    },
   ]);
 
   const [jobTitle, setJobTitle] = useState("");
@@ -40,7 +51,10 @@ export default function Dashboard() {
   }, []);
 
   const createCoverLetter = (e) => {
-    setCoverLetterOptions([...coverLetterOptions, {title: "New Cover Letter", content: "This is a new cover letter"}]);
+    setCoverLetterOptions([
+      ...coverLetterOptions,
+      { title: "New Cover Letter", content: "This is a new cover letter" },
+    ]);
   };
 
   const handleSidebar = (e) => {
@@ -82,6 +96,7 @@ export default function Dashboard() {
 
   return (
     <div className={s.page}>
+      <div className={s.gradient_background}></div>
       <div className={s.navbar}>
         <div className={s.navbar_left}>
           <img className={s.logo} src="/logo.svg" alt="logo" />
@@ -97,7 +112,9 @@ export default function Dashboard() {
           <h1>COVER LETTER GENERATOR</h1>
           <img src="/double_arrow_right.svg" alt="logo" />
         </div>
-        <div className={s.navbar_right}>USER_PLACEHOLDER</div>
+        <div className={s.navbar_right}>
+          <UserDropdown />
+        </div>
       </div>
       <div className={s.content}>
         <div
@@ -118,7 +135,10 @@ export default function Dashboard() {
                   <button
                     className={s.cover_letter_selector_button}
                     key={`coverLetterOption-${index}`}
-                    onClick={(e) => {setOpenLetter(index); setLetterText(coverLetterOption.content)}}
+                    onClick={(e) => {
+                      setOpenLetter(index);
+                      setLetterText(coverLetterOption.content);
+                    }}
                   >
                     <img src="/cover_letter_button_icon.svg" alt="logo" />
                     {coverLetterOption.title}
@@ -147,16 +167,20 @@ export default function Dashboard() {
               type="text"
               placeholder=""
               value={coverLetterOptions[openLetter].content}
-              onChange={(e) => setCoverLetterOptions(coverLetterOptions.map((coverLetterOption, index) => {
-                if (index === openLetter) {
-                  return {
-                    ...coverLetterOption,
-                    content: e.target.value
-                  }
-                } else {
-                  return coverLetterOption;
-                }
-              }))}
+              onChange={(e) =>
+                setCoverLetterOptions(
+                  coverLetterOptions.map((coverLetterOption, index) => {
+                    if (index === openLetter) {
+                      return {
+                        ...coverLetterOption,
+                        content: e.target.value,
+                      };
+                    } else {
+                      return coverLetterOption;
+                    }
+                  })
+                )
+              }
             />
           </div>
           <div className={s.content_center_input_container}>
@@ -167,7 +191,12 @@ export default function Dashboard() {
               onChange={(e) => setAdditionalInstructions(e.target.value)}
             />
 
-            <button className={loading ? s.loading_button: null} onClick={(e) => generateCoverLetter(e)}>GO!</button>
+            <button
+              className={loading ? s.loading_button : null}
+              onClick={(e) => generateCoverLetter(e)}
+            >
+              GO!
+            </button>
           </div>
         </div>
         <div className={s.content_right}>
