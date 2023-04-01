@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import { Typewriter } from "react-simple-typewriter";
 import UserDropdown from "./component/UserDropdown";
 
+
 const ipsum_words = [
   "Dear Hiring Manager, \nI am writing to express my interest in the open position at your company. My name is John Doe and I believe that my skills and experience make me a strong candidate for the role. I am an experienced professional with a proven track record of success in the industry. \nIn my previous role at XYZ Company, I was responsible for managing a team of professionals and overseeing the implementation of several successful projects. I have extensive experience in project management, strategic planning, and team leadership. I am confident that my skills and experience would be a valuable asset to your team.\n I hold a Bachelor's degree in Business Administration from ABC University and have completed several professional development courses in ",
 ];
