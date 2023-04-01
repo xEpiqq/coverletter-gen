@@ -9,8 +9,10 @@ import { useRouter } from "next/navigation";
 
 import { signOut, getAuth } from "firebase/auth";
 
-export default function UserDropdown({user}) {
+export default function UserDropdown() {
   const router = useRouter();
+    const auth = getAuth();
+    const [user, loadingUser, error] = useAuthState(auth);
 
   return (
     <div className={s.dropdown}>
