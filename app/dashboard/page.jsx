@@ -4,12 +4,35 @@ import React from "react";
 import s from "./dashboard.module.scss";
 import { useState, useEffect } from "react";
 
+import UserDropdown from "../component/UserDropdown";
+
+//imort signout
+import { signOut, getAuth } from "firebase/auth";
+
+import { useRouter } from "next/navigation";
+import { useAuthState } from "react-firebase-hooks/auth";
+
+import * as pdfjsLib from "pdfjs-dist/webpack";
+
+import app from "../component/FirebaseApp";
+
 export default function Dashboard() {
+  const router = useRouter();
+
   const [openLetter, setOpenLetter] = useState(0);
   const [coverLetterOptions, setCoverLetterOptions] = useState([
-    {title: "My First Cover Letter", content: "This is my first cover letter"},
-    {title: "My Second Cover Letter", content: "This is my second cover letter"},
-    {title: "My Third Cover Letter", content: "This is my third cover letter"},
+    {
+      title: "My First Cover Letter",
+      content: "This is my first cover letter",
+    },
+    {
+      title: "My Second Cover Letter",
+      content: "This is my second cover letter",
+    },
+    {
+      title: "My Third Cover Letter",
+      content: "This is my third cover letter",
+    },
   ]);
 
   const [jobTitle, setJobTitle] = useState("");
@@ -17,11 +40,14 @@ export default function Dashboard() {
   const [jobLocation, setJobLocation] = useState("");
   const [jobDescription, setJobDescription] = useState("");
   const [additionalInstructions, setAdditionalInstructions] = useState("");
-  const [resumePdf, setResumePdf] = useState("");
+  const [resumePdf, setResumePdf] = useState(undefined);
   const [creativityMeter, setCreativityMeter] = useState(0);
   const [letterText, setLetterText] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const auth = getAuth();
+  const [user, loadingUser, error] = useAuthState(auth);
 
   const uploadResume = (e) => {};
 
@@ -40,7 +66,40 @@ export default function Dashboard() {
   }, []);
 
   const createCoverLetter = (e) => {
-    setCoverLetterOptions([...coverLetterOptions, {title: "New Cover Letter", content: "This is a new cover letter"}]);
+    setCoverLetterOptions([
+      ...coverLetterOptions,
+      { title: "New Cover Letter", content: "This is a new cover letter" },
+    ]);
+  };
+
+  const fileUploaded = (e) => {
+    // get the text content of the pdf
+    const reader = new FileReader();
+    let allText = "";
+    reader.onload = function (e) {
+      const typedarray = new Uint8Array(e.target.result);
+      pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
+        // put all pages text in a single string
+        for (let i = 0; i < pdf.numPages; i++) {
+          pdf.getPage(i + 1).then(function (page) {
+            page.getTextContent().then(function (textContent) {
+              const textItems = textContent.items;
+              const finalString = textItems
+                .map(function (item) {
+                  return item.str;
+                })
+                .join(" ");
+              allText += finalString;
+              // print if it is the last page
+              if (i === pdf.numPages - 1) {
+                setResumePdf(allText.replace(/\s+/g, " ").trim());
+              }
+            });
+          });
+        }
+      });
+    };
+    reader.readAsArrayBuffer(e.target.files[0]);
   };
 
   const handleSidebar = (e) => {
@@ -80,8 +139,17 @@ export default function Dashboard() {
     setLoading(false);
   };
 
+  if (loadingUser) {
+    return <div>Loading...</div>;
+  }
+
+  if (!auth.currentUser) {
+    router.push("/login");
+  }
+
   return (
     <div className={s.page}>
+      <div className={s.gradient_background}></div>
       <div className={s.navbar}>
         <div className={s.navbar_left}>
           <img className={s.logo} src="/logo.svg" alt="logo" />
@@ -97,7 +165,9 @@ export default function Dashboard() {
           <h1>COVER LETTER GENERATOR</h1>
           <img src="/double_arrow_right.svg" alt="logo" />
         </div>
-        <div className={s.navbar_right}>USER_PLACEHOLDER</div>
+        <div className={s.navbar_right}>
+          <UserDropdown user={user} />
+        </div>
       </div>
       <div className={s.content}>
         <div
@@ -118,7 +188,10 @@ export default function Dashboard() {
                   <button
                     className={s.cover_letter_selector_button}
                     key={`coverLetterOption-${index}`}
-                    onClick={(e) => {setOpenLetter(index); setLetterText(coverLetterOption.content)}}
+                    onClick={(e) => {
+                      setOpenLetter(index);
+                      setLetterText(coverLetterOption.content);
+                    }}
                   >
                     <img src="/cover_letter_button_icon.svg" alt="logo" />
                     {coverLetterOption.title}
@@ -134,7 +207,13 @@ export default function Dashboard() {
                 <img src="/subscription_icon.svg" alt="logo" />
                 Subscription
               </button>
-              <button className={s.logout_button}>
+              <button
+                className={s.logout_button}
+                onClick={() => {
+                  signOut(auth);
+                  router.push("/");
+                }}
+              >
                 <img src="/logout_icon.svg" alt="logo" />
                 Logout
               </button>
@@ -147,16 +226,20 @@ export default function Dashboard() {
               type="text"
               placeholder=""
               value={coverLetterOptions[openLetter].content}
-              onChange={(e) => setCoverLetterOptions(coverLetterOptions.map((coverLetterOption, index) => {
-                if (index === openLetter) {
-                  return {
-                    ...coverLetterOption,
-                    content: e.target.value
-                  }
-                } else {
-                  return coverLetterOption;
-                }
-              }))}
+              onChange={(e) =>
+                setCoverLetterOptions(
+                  coverLetterOptions.map((coverLetterOption, index) => {
+                    if (index === openLetter) {
+                      return {
+                        ...coverLetterOption,
+                        content: e.target.value,
+                      };
+                    } else {
+                      return coverLetterOption;
+                    }
+                  })
+                )
+              }
             />
           </div>
           <div className={s.content_center_input_container}>
@@ -167,7 +250,12 @@ export default function Dashboard() {
               onChange={(e) => setAdditionalInstructions(e.target.value)}
             />
 
-            <button className={loading ? s.loading_button: null} onClick={(e) => generateCoverLetter(e)}>GO!</button>
+            <button
+              className={loading ? s.loading_button : null}
+              onClick={(e) => generateCoverLetter(e)}
+            >
+              GO!
+            </button>
           </div>
         </div>
         <div className={s.content_right}>
@@ -224,13 +312,14 @@ export default function Dashboard() {
           </div>
           <div className={s.content_right_bottom}>
             <div className={s.nothing_attached_text}>
-              Nothing currently attached
+              {resumePdf ? "Resume attached" :
+              "Nothing currently attached"}
             </div>
             <label className={s.upload_resume_button}>
               <input
                 type="file"
                 accept="application/pdf"
-                onChange={(e) => console.log("get this done!")}
+                onChange={(e) => fileUploaded(e)}
               />
               Upload CV
             </label>

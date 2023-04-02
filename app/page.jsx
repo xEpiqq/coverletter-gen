@@ -13,50 +13,17 @@ import {
 import app from "./component/FirebaseApp";
 import { useRouter } from "next/navigation";
 import { Typewriter } from "react-simple-typewriter";
+import UserDropdown from "./component/UserDropdown";
+
 
 const ipsum_words = [
   "Dear Hiring Manager, \nI am writing to express my interest in the open position at your company. My name is John Doe and I believe that my skills and experience make me a strong candidate for the role. I am an experienced professional with a proven track record of success in the industry. \nIn my previous role at XYZ Company, I was responsible for managing a team of professionals and overseeing the implementation of several successful projects. I have extensive experience in project management, strategic planning, and team leadership. I am confident that my skills and experience would be a valuable asset to your team.\n I hold a Bachelor's degree in Business Administration from ABC University and have completed several professional development courses in ",
 ];
 
 function Page() {
-  const current_movies = [];
   const auth = getAuth();
   const [user, loading, error] = useAuthState(auth);
   const router = useRouter();
-
-  const [addMovie, setAddMovie] = useState("");
-  const [rerenderHack, setRerenderHack] = useState(false);
-  const [email, setEmail] = useState("");
-
-  function addMovieToList() {
-    const addMovieWithoutSpaces = addMovie.replace(/\s/g, "");
-    if (addMovieWithoutSpaces !== "") {
-      current_movies.push(addMovie);
-      setAddMovie("");
-    }
-  }
-
-  function submitList() {
-    if (current_movies.length === 0) {
-      alert("Please add a movie to the list");
-      return;
-    }
-    if (email === "") {
-      alert("Please enter an email address");
-      return;
-    }
-
-    current_movies.length = 0;
-    console.log("submitted");
-    setRerenderHack(!rerenderHack);
-  }
-
-  function deleteItem(movie) {
-    console.log(movie);
-    current_movies.splice(current_movies.indexOf(movie), 1);
-    console.log("deleted");
-    setRerenderHack(!rerenderHack);
-  }
 
   return (
     <div className={s.page}>
@@ -70,8 +37,8 @@ function Page() {
             <h3>GPTCOVERLETTER</h3>
           </div>
           <div className={s.login}>
-            {false ? (
-              <h1 style={{ marginLeft: "4rem" }}>USER</h1>
+            {user ? (
+              <UserDropdown user={user} />
             ) : (
               <div className={s.login_button_container}>
                 <button
@@ -163,18 +130,6 @@ function Page() {
     </div>
   );
 
-  // return (
-  //   <div className={s.home}>
-  //     <div className={s.navbar} >
-  //       <img src='/ferrett.png' />
-  //       <h2>StreamScout</h2>
-  //       {user ? <h1 style={{marginLeft: "4rem"}}>{user.displayName}</h1> : <h1>Guest</h1>}
-  //       {user ? <img src={user.photoURL} style={{borderRadius: "50rem"}}/> : <h1>Guest</h1>}
-
-  //     </div>
-  //     <CreateCLForm />
-  //   </div>
-  // )
 }
 
 export default Page;

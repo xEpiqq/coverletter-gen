@@ -60,7 +60,7 @@ function Login({ searchParams }) {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-
+      router.push("/dashboard");
       createFirestoreUser(user.uid, user.displayName, user.email);
       const additionalUserInfo = await getAdditionalUserInfo(result);
     } catch (error) {

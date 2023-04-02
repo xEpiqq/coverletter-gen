@@ -1,21 +1,26 @@
 .page {
   display: flex;
   flex-direction: column;
-  overflow: auto;
-
-  background-color: #242424;
+  justify-content: center;
+  align-items: center;
 
   width: 100vw;
   height: 100vh;
 
+  overflow: hidden;
+
   @media (max-width: 768px) {
     height: 100%;
+    overflow: auto;
   }
+
+  background-color: white;
+
+  z-index: -1;
+
 }
 
 .navbar {
-  background: linear-gradient(125.1deg, #fadc9e -16.9%, #d27653 83.87%);
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -25,6 +30,10 @@
   padding-right: 1.5rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  width: 95%;
+  padding-right: 5%;
+
+  z-index: 1;
 
   .navbar_left {
     img {
@@ -51,7 +60,9 @@
     }
   }
 
-  .navbar_right {}
+  .navbar_right {
+    z-index: 1000;
+  }
 
   @media (max-width: 768px) {
     .navbar_center {
@@ -62,13 +73,14 @@
 
 .content {
   width: 100%;
-  height: 100%;
+  // height = 100% - navbar height
+  height: calc(100% - 4rem);
 
+  z-index: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  background: linear-gradient(125.1deg, #fadc9e -16.9%, #d27653 140.87%);
 
   * {
     font-family: "Kodchasan", sans-serif;
@@ -92,6 +104,7 @@
 .content_right {
   height: 100%;
   width: 100%;
+  flex: 1;
 }
 
 .content_left_open,
@@ -120,7 +133,13 @@
       border-radius: 3px;
       margin-top: 1rem;
 
-      background-color: #d27653;
+      // background from the image button.png in the public folder
+      background-image: url("/button.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      opacity: 0.8;
 
       border-radius: 5px;
 
@@ -128,18 +147,35 @@
 
       &:hover {
         cursor: pointer;
-        background-color: #4c4d4f;
+        
+        // decrease opacity
+        opacity: 0.7;
       }
     }
   }
 
   .content_left_middle {
+    flex: 1;
+    display: flex;
     width: 100%;
+    overflow-y: scroll;
+    // make scroll pretty
+    &::-webkit-scrollbar {
+      width: 0.5rem;
+      
+      // make the thumb pretty
+      &-thumb {
+        background-color: #d27653;
+        border-radius: 0.5rem;
+      }
+    }
     .cover_letter_selector_container {
+      flex: 1;
       display: flex;
       flex-direction: column;
 
-      width: 100%;
+
+
       .cover_letter_selector_button {
         display: flex;
         flex-direction: row;
@@ -309,7 +345,7 @@
   align-items: flex-start;
   margin-right: 3rem;
   width: 100%;
-  height: 100px;
+  height: 200px;
 
   @media (max-width: 768px) {
     h2 {display: none;}
@@ -368,7 +404,7 @@
     border: 1.5px solid #414243;
     border-radius: 4px;
 
-    height: 100%;
+    height: 40rem;
     width: 95%;
 
     resize: none;
@@ -511,4 +547,20 @@
     cursor: pointer;
     background-color: #414243;
   }
+}
+
+.gradient_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  
+  // i have an image called background.png in the public folder
+  background-image: url(../../public/background.png);
+  background-size: cover;
+
+  opacity: 0.85;
+
+  z-index: 0;
 }
