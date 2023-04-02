@@ -12,10 +12,11 @@ import { signOut, getAuth } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useAuthState } from "react-firebase-hooks/auth";
 
+import * as pdfjsLib from "pdfjs-dist/webpack";
+
 import app from "../component/FirebaseApp";
 
 export default function Dashboard() {
-
   const router = useRouter();
 
   const [openLetter, setOpenLetter] = useState(0);
@@ -39,7 +40,7 @@ export default function Dashboard() {
   const [jobLocation, setJobLocation] = useState("");
   const [jobDescription, setJobDescription] = useState("");
   const [additionalInstructions, setAdditionalInstructions] = useState("");
-  const [resumePdf, setResumePdf] = useState("");
+  const [resumePdf, setResumePdf] = useState(undefined);
   const [creativityMeter, setCreativityMeter] = useState(0);
   const [letterText, setLetterText] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -69,6 +70,36 @@ export default function Dashboard() {
       ...coverLetterOptions,
       { title: "New Cover Letter", content: "This is a new cover letter" },
     ]);
+  };
+
+  const fileUploaded = (e) => {
+    // get the text content of the pdf
+    const reader = new FileReader();
+    let allText = "";
+    reader.onload = function (e) {
+      const typedarray = new Uint8Array(e.target.result);
+      pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
+        // put all pages text in a single string
+        for (let i = 0; i < pdf.numPages; i++) {
+          pdf.getPage(i + 1).then(function (page) {
+            page.getTextContent().then(function (textContent) {
+              const textItems = textContent.items;
+              const finalString = textItems
+                .map(function (item) {
+                  return item.str;
+                })
+                .join(" ");
+              allText += finalString;
+              // print if it is the last page
+              if (i === pdf.numPages - 1) {
+                setResumePdf(allText.replace(/\s+/g, " ").trim());
+              }
+            });
+          });
+        }
+      });
+    };
+    reader.readAsArrayBuffer(e.target.files[0]);
   };
 
   const handleSidebar = (e) => {
@@ -108,11 +139,10 @@ export default function Dashboard() {
     setLoading(false);
   };
 
-
   if (loadingUser) {
     return <div>Loading...</div>;
   }
-  
+
   if (!auth.currentUser) {
     router.push("/login");
   }
@@ -177,7 +207,13 @@ export default function Dashboard() {
                 <img src="/subscription_icon.svg" alt="logo" />
                 Subscription
               </button>
-              <button className={s.logout_button} onClick={() => {signOut(auth); router.push('/')}}>
+              <button
+                className={s.logout_button}
+                onClick={() => {
+                  signOut(auth);
+                  router.push("/");
+                }}
+              >
                 <img src="/logout_icon.svg" alt="logo" />
                 Logout
               </button>
@@ -276,13 +312,14 @@ export default function Dashboard() {
           </div>
           <div className={s.content_right_bottom}>
             <div className={s.nothing_attached_text}>
-              Nothing currently attached
+              {resumePdf ? "Resume attached" :
+              "Nothing currently attached"}
             </div>
             <label className={s.upload_resume_button}>
               <input
                 type="file"
                 accept="application/pdf"
-                onChange={(e) => console.log("get this done!")}
+                onChange={(e) => fileUploaded(e)}
               />
               Upload CV
             </label>

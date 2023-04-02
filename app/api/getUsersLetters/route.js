@@ -10,7 +10,6 @@ import {
 
 export function POST(request) {
 
-
   
   const defaultData = [
     {title: "My First Server Cover Letter", content: "This is my first cover letter"},
