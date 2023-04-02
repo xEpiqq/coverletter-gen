@@ -2,31 +2,57 @@
 import React from "react";
 import s from "./freetrial.module.scss";
 import { useState, useEffect } from "react";
-import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, } from "firebase/auth";
-import { getFirestore, collection, addDoc, setDoc, doc, getDoc, } from "firebase/firestore";
+import { getFirestore, collection, addDoc, setDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import app from '../component/FirebaseApp'
 import { useRouter } from "next/navigation";
+import {Elements, PaymentElement, useElements, useStripe} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+import CheckoutForm from './checkoutform'
 
 ///////////////////////////////////////////////////////////////
 //CONSIDER USING FIREBASE REDIRECT ON MOBILE INSTEAD OF POPUP//
 ///////////////////////////////////////////////////////////////
 
-function Login({ searchParams }) {
+const stripePromise = loadStripe('pk_test_51Mn4sZHpzbXtemiL0XN5qLTlaBxkoriYCe4gwg8Vq7TQxYs2CLpIC5HZahV7Xyf0EfKlq7JhzcG6GP2TTwjbsi8t00nALOso66');
+
+
+function Freetrial() {
+  ////firebase - firestore////
   const db = getFirestore(app);
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
-  const [user, loading, error] = useAuthState(auth);
   const router = useRouter();
-  const [signup, setSignup] = useState(searchParams.signup);
+  const [user, loading, error] = useAuthState(auth);
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  ///////////stripe///////////
 
-  useEffect(() => {
-    console.log(router.query);
-  }, [router]);
+  const basic_price_id = "price_1MpKHWHpzbXtemiLvV57mUHU"
+  const [clientSecret, setClientSecret] = useState('');
+
+  const options = {
+    clientSecret: clientSecret,
+    appearance: { theme: 'stripe' }
+  };
+
+  async function createCustomer(username, emailaddress, userid) {
+    const response = await fetch('/api/createstripecustomer', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ email: emailaddress, name: username, user_id: userid })});
+    const customer_object = await response.json();
+    return customer_object.id
+  }
+
+  async function subscribeBasic(customer_id) {
+    const response = await fetch('/api/createstripesub', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ priceId: basic_price_id, customerId: customer_id })});
+    const responseData = await response.json();
+    setClientSecret(responseData.clientSecret)
+
+  }
+
+  ////////////////////////////
 
   async function createFirestoreUser(user_id, displayname, email) {
-    const userRef = doc(db, "Users", user_id);
+    const userRef = doc(db, "users", user_id);
     const userDoc = await getDoc(userRef);
 
     if (userDoc.exists()) {
@@ -36,34 +62,48 @@ function Login({ searchParams }) {
       await setDoc(userRef, {
         name: displayname,
         email: email,
-        sub: "none",
+        stripe_customer_id: "null"
       });
       console.log("User document created");
     }
   }
 
   async function googleLogin() {
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      const user = result.user;
-      createFirestoreUser(user.uid, user.displayName, user.email);
-      const additionalUserInfo = await getAdditionalUserInfo(result);
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    createFirestoreUser(user.uid, user.displayName, user.email);
+    setPaymentLoading(true);
+    const customer_id = await createCustomer(user.displayName, user.email, user.uid);
+
+    const userRef = doc(db, "users", user.uid);
+
+    await updateDoc(userRef, {
+      stripe_customer_id: customer_id
+    });
+
+    await subscribeBasic(customer_id);
+    setPaymentLoading(false);
     } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // const email = error.customData.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
+    console.log("error signing in");
     }
   }
 
-  async function handleSignOut() {
-    try {
-      await signOut(auth);
-    } catch (error) {
-      console.log("error signing out");
-    }
+  if (paymentLoading) {
+    return (
+      <div className={s.rollerpage}>
+        <div class={s.ldsring}><div></div><div></div><div></div><div></div></div>
+        <h1>Loading trial form.</h1>
+      </div>
+    )
+  }
+
+  if (clientSecret) {
+    return (
+      <Elements options={options} stripe={stripePromise}>
+        <CheckoutForm client_secret={clientSecret}/>
+      </Elements>
+    )
   }
 
   return (
@@ -100,4 +140,4 @@ function Login({ searchParams }) {
 
 }
 
-export default Login;
+export default Freetrial;
