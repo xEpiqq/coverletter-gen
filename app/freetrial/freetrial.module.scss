@@ -8,11 +8,17 @@
   justify-content: flex-start;
   align-items: center;
   background: linear-gradient(180deg, #FADC9E -32.46%, rgba(255, 255, 255, 0) 93.53%);
+
+  @media (max-height: 768px) {
+    height: 100%;
+    padding-bottom: 4rem;
+  }
+    
 }
 
 .logo {
   margin-top: 3rem;
-  width: 40%;
+  width: 20rem;
   &:hover {
     cursor: pointer;
   }
@@ -49,6 +55,20 @@
     text-align: center;
     color: black;
     margin-top: .75rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    .box_lt {
+      font-size: 2.5rem;
+    }
+    .box_st {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -103,8 +123,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   border: 4px solid #FADC9E;
+  position: relative;
   img {
+    position: absolute;
+    left: 0.5rem;
     margin-left: 1rem;
     margin-right: 6.5rem;
     width: 1.75rem;

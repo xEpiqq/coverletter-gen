@@ -2,40 +2,95 @@
 import React from "react";
 
 import s from "./dashboard.module.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Dashboard() {
-  const [openLetter, setOpenLetter] = useState(false);
+  const [openLetter, setOpenLetter] = useState(0);
   const [coverLetterOptions, setCoverLetterOptions] = useState([
-    "My First Cover Letter",
-    "My Second Cover Letter",
-    "My Third Cover Letter",
+    {title: "My First Cover Letter", content: "This is my first cover letter"},
+    {title: "My Second Cover Letter", content: "This is my second cover letter"},
+    {title: "My Third Cover Letter", content: "This is my third cover letter"},
   ]);
-  const [additionalInstructions, setAdditionalInstructions] = useState(false);
+
   const [jobTitle, setJobTitle] = useState("");
   const [jobCompany, setJobCompany] = useState("");
   const [jobLocation, setJobLocation] = useState("");
   const [jobDescription, setJobDescription] = useState("");
+  const [additionalInstructions, setAdditionalInstructions] = useState("");
+  const [resumePdf, setResumePdf] = useState("");
   const [creativityMeter, setCreativityMeter] = useState(0);
   const [letterText, setLetterText] = useState("");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const uploadResume = (e) => {
-    // TODO: Upload resume to database
-  };
+  const uploadResume = (e) => {};
+
+  useEffect(() => {
+    const res = fetch("/api/getUsersLetters", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(""),
+    }).then((res) => {
+      const json = res.json().then((json) => {
+        setCoverLetterOptions(json.data);
+      });
+    });
+  }, []);
 
   const createCoverLetter = (e) => {
-    setCoverLetterOptions([...coverLetterOptions, "New Cover Letter"]);
+    setCoverLetterOptions([...coverLetterOptions, {title: "New Cover Letter", content: "This is a new cover letter"}]);
   };
 
-  const generateCoverLetter = (e) => {
-    // TODO: Generate cover letter
+  const handleSidebar = (e) => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const generateCoverLetter = async (e) => {
+    if (loading) return;
+
+    setLoading(true);
+
+    const data = {
+      jobTitle,
+      jobCompany,
+      jobLocation,
+      jobDescription,
+      additionalInstructions,
+      resumePdf,
+      creativityMeter,
+    };
+
+    const res = await fetch("/api/createCoverLetter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const json = await res.json();
+
+    console.log(json);
+    setLetterText(json.data);
+
+    if (!res.ok) throw Error(json.message);
+
+    setLoading(false);
   };
 
   return (
     <div className={s.page}>
       <div className={s.navbar}>
         <div className={s.navbar_left}>
-          <img src="/logo_green.svg" alt="logo" />
+          <img className={s.logo} src="/logo.svg" alt="logo" />
+          <img
+            className={s.sidebar_toggle}
+            src="/logo_background.svg"
+            alt="logo"
+            onClick={handleSidebar}
+          />
         </div>
         <div className={s.navbar_center}>
           <img src="/double_arrow_left.svg" alt="logo" />
@@ -45,8 +100,13 @@ export default function Dashboard() {
         <div className={s.navbar_right}>USER_PLACEHOLDER</div>
       </div>
       <div className={s.content}>
-        <div className={s.content_left}>
+        <div
+          className={sidebarOpen ? s.content_left_open : s.content_left_closed}
+        >
           <div className={s.content_left_top}>
+            {sidebarOpen && (
+              <button onClick={handleSidebar}>{"< Close"}</button>
+            )}
             <button onClick={(e) => createCoverLetter(e)}>
               {"+ New Cover Letter"}
             </button>
@@ -58,9 +118,10 @@ export default function Dashboard() {
                   <button
                     className={s.cover_letter_selector_button}
                     key={`coverLetterOption-${index}`}
+                    onClick={(e) => {setOpenLetter(index); setLetterText(coverLetterOption.content)}}
                   >
                     <img src="/cover_letter_button_icon.svg" alt="logo" />
-                    {coverLetterOption}
+                    {coverLetterOption.title}
                   </button>
                 );
               })}
@@ -85,8 +146,17 @@ export default function Dashboard() {
             <textarea
               type="text"
               placeholder=""
-              value={letterText}
-              onChange={(e) => setLetterText(e.target.value)}
+              value={coverLetterOptions[openLetter].content}
+              onChange={(e) => setCoverLetterOptions(coverLetterOptions.map((coverLetterOption, index) => {
+                if (index === openLetter) {
+                  return {
+                    ...coverLetterOption,
+                    content: e.target.value
+                  }
+                } else {
+                  return coverLetterOption;
+                }
+              }))}
             />
           </div>
           <div className={s.content_center_input_container}>
@@ -97,28 +167,45 @@ export default function Dashboard() {
               onChange={(e) => setAdditionalInstructions(e.target.value)}
             />
 
-            <button onClick={(e) => generateCoverLetter(e)}>GO!</button>
+            <button className={loading ? s.loading_button: null} onClick={(e) => generateCoverLetter(e)}>GO!</button>
           </div>
         </div>
         <div className={s.content_right}>
           <h2>Details</h2>
           <div className={s.input_container}>
             <label htmlFor="Job input">Job Title</label>
-            <input id="Job input" className={s.content_right_input} />
+            <input
+              onChange={(e) => setJobTitle(e.target.value)}
+              value={jobTitle}
+              id="Job input"
+              className={s.content_right_input}
+            />
           </div>
           <div className={s.input_container}>
             <label htmlFor="Company input">Company</label>
-            <input id="Company input" className={s.content_right_input} />
+            <input
+              onChange={(e) => setJobCompany(e.target.value)}
+              value={jobCompany}
+              id="Company input"
+              className={s.content_right_input}
+            />
           </div>
           <div className={s.input_container}>
             <label htmlFor="Location input">Location</label>
-            <input id="Location input" className={s.content_right_input} />
+            <input
+              onChange={(e) => setJobLocation(e.target.value)}
+              value={jobLocation}
+              id="Location input"
+              className={s.content_right_input}
+            />
           </div>
           <div className={s.input_container_big}>
             <label id="Job Description input">
               Paste the job description here
             </label>
             <textarea
+              onChange={(e) => setJobDescription(e.target.value)}
+              value={jobDescription}
               id="Job Description input"
               className={s.content_right_input_textbox}
             />
@@ -140,7 +227,11 @@ export default function Dashboard() {
               Nothing currently attached
             </div>
             <label className={s.upload_resume_button}>
-              <input type="file" />
+              <input
+                type="file"
+                accept="application/pdf"
+                onChange={(e) => console.log("get this done!")}
+              />
               Upload CV
             </label>
           </div>

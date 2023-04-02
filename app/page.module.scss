@@ -13,7 +13,11 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(125.1deg, #fadc9e -16.9%, #d27653 83.87%);
+    
+    // i have an image called background.png in the public folder
+    background-image: url(../public/background.png);
+    background-size: cover;
+
     z-index: -1;
   }
 
@@ -78,7 +82,6 @@
 
     .home_left {
       width: 90%;
-
       .text_box {
 
         button {
@@ -139,6 +142,8 @@
 
     font-style: normal;
     letter-spacing: 0.2em;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .text_box {
