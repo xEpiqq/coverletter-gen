@@ -54,3 +54,5 @@ next-env.d.ts
 yarn.lock
 tsconfig.json
 
+package-lock.json
+yarn.lock
