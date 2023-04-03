@@ -7,7 +7,7 @@ export async function POST(request) {
 
     try {
         // get the user document
-        const userRef = db.collection("Users").doc(user_id);
+        const userRef = db.collection("users").doc(user_id);
         const userDoc = await userRef.get();
 
         // if the user document exists, return

@@ -5,7 +5,7 @@ export async function PUT(request) {
   const { user_uid, letter_title, letter_contents } = body;
 
   try {
-    db.collection("Users").doc(user_uid).collection("letters").add({
+    db.collection("users").doc(user_uid).collection("letters").add({
       title: letter_title,
       contents: letter_contents,
     });
@@ -23,7 +23,7 @@ export async function POST(request) {
 
   try {
     const letterRef = db
-      .collection("Users")
+      .collection("users")
       .doc(user_uid)
       .collection("letters")
       .doc(letter_uid);
@@ -49,7 +49,7 @@ export async function DELETE(request) {
   const { user_uid, letter_uid } = request.body;
 
   try {
-    const letterRef = db.doc("Users", user_uid, "letters", letter_uid);
+    const letterRef = db.doc("users", user_uid, "letters", letter_uid);
     const letterDoc = await getDoc(letterRef);
 
     if (!letterDoc.exists()) {
@@ -67,7 +67,7 @@ export async function GET(request) {
   const { user_uid, letter_uid } = request.body;
 
   try {
-    const letterRef = db.doc("Users", user_uid, "letters", letter_uid);
+    const letterRef = db.doc("users", user_uid, "letters", letter_uid);
     const letterDoc = await getDoc(letterRef);
 
     if (!letterDoc.exists()) {
