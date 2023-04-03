@@ -7,9 +7,11 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
+import db from '../../../utils/db';
+
 export async function POST(request) {
 
-  const { body } = request;
+  const body = await request.json();
   const {
     jobTitle,
     jobCompany,
@@ -23,18 +25,26 @@ export async function POST(request) {
 
   // check if the user has the correct permissions on firebase
   // if not, return an error
-  if (!user_id) {
-    return new Response(JSON.stringify({ error: "User not found" }));
+  const userRef = db.collection("Users").doc(user_id);
+  const userDoc = await userRef.get();
+
+  if (!userDoc.exists) {
+    return new Response(JSON.stringify({ error: "User doesn't exist" }));
+  }
+
+  if (userDoc.data().sub == "none") {
+    return new Response( JSON.stringify({ error: "User does not have a subscription" }));
   }
 
   try {
     const model = "gpt-3.5-turbo";
 
-    const prompt = `I am applying for the position of ${jobTitle} at ${jobCompany} in ${jobLocation}. I am excited to work with you and your team. ${additionalInstructions}`;
+    const prompt = 'You will create a cover letter for a job at ' + jobCompany + ' as a ' + jobTitle + '. The job is located in ' + jobLocation + '. The job description is: ' + jobDescription + '. Additional instructions are: ' + additionalInstructions + '. Your resume is attached. the resume is ' + resumePdf + '.';
 
-    const completion = await openai.createChatCompletion({
+    const completion = openai.createChatCompletion({
       model: model,
       messages: [{ role: "system", content: prompt }],
+      temperature: creativityMeter / 50,
     });
 
     if (completion.data.choices[0].text == "undefined") {

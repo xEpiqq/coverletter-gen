@@ -3,8 +3,6 @@ import db from "../../../../utils/db";
 export async function PUT(request) {
   const body = await request.json();
   const { user_uid, letter_title, letter_contents } = body;
-  console.log(request.body);
-  console.log(user_uid, letter_title, letter_contents);
 
   try {
     db.collection("Users").doc(user_uid).collection("letters").add({
@@ -22,8 +20,6 @@ export async function PUT(request) {
 export async function POST(request) {
   const body = await request.json();
   const { user_uid, letter_uid, letter_title, letter_contents } = body;
-
-  console.log(user_uid, letter_uid, letter_title, letter_contents);
 
   try {
     const letterRef = db

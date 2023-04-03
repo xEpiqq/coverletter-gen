@@ -163,6 +163,8 @@ export default function Dashboard() {
       user_id: user.uid,
     };
 
+    console.log(data)
+
     const res = await fetch("/api/createCoverLetter", {
       method: "POST",
       headers: {
@@ -175,10 +177,15 @@ export default function Dashboard() {
 
     console.log(json);
     setLetterText(json.data);
+    // update the current cover letter
+    coverLetterOptions[openLetter].contents = json.data;
+    // and title
+    coverLetterOptions[openLetter].title = jobCompany;
+    setLetterTextFlag(true);
+    setLoading(false);
 
     if (!res.ok) throw Error(json.message);
 
-    setLoading(false);
   };
 
   if (loadingUser) {
