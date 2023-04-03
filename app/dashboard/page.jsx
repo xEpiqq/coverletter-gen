@@ -1,23 +1,35 @@
 "use client";
 import React from "react";
-
 import s from "./dashboard.module.scss";
 import { useState, useEffect } from "react";
-
 import UserDropdown from "../component/UserDropdown";
-
-//imort signout
 import { signOut, getAuth } from "firebase/auth";
-
 import { useRouter } from "next/navigation";
 import { useAuthState } from "react-firebase-hooks/auth";
-
 import * as pdfjsLib from "pdfjs-dist/webpack";
-
 import app from "../component/FirebaseApp";
+import useSWR from 'swr'
+
 
 export default function Dashboard() {
   const router = useRouter();
+  const auth = getAuth();
+  const [user, loadingUser, error] = useAuthState(auth);
+
+  // fetch user data from firestore
+  const { data, swrerror, swrisLoading } = useSWR('/api/firestoreUserData', (url) => {
+    return fetch(url, { method: 'POST', headers: {'Content-Type': 'application/json'}, 
+    body: JSON.stringify({ uid: user.uid })}).then((res) => res.json())
+  })
+
+  if (user && data) {
+    if (data.subscriptionstatus != "active") {
+      router.push('/freetrial')
+    } else {
+      console.log("user is logged in / subscribed")
+    }
+  }
+
 
   const [openLetter, setOpenLetter] = useState(0);
   const [coverLetterOptions, setCoverLetterOptions] = useState([
@@ -45,9 +57,6 @@ export default function Dashboard() {
   const [letterText, setLetterText] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const auth = getAuth();
-  const [user, loadingUser, error] = useAuthState(auth);
 
   const uploadResume = (e) => {};
 
@@ -143,7 +152,7 @@ export default function Dashboard() {
     return <div>Loading...</div>;
   }
 
-  if (!auth.currentUser) {
+  if (!user) {
     router.push("/login");
   }
 

@@ -77,7 +77,7 @@ async function subscriptionCreated(dataObject) {
 }
 
 async function subscriptionUpdated(dataObject) {
-  console.log('customer subscription created!!!')
+  console.log('customer subscription updated!!!')
   const product_id = dataObject.items.data[0].price.product
   const subscription_id = dataObject.id
   const subscription_status = dataObject.status
