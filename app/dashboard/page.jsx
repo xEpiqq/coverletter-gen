@@ -24,14 +24,6 @@ export default function Dashboard() {
     body: JSON.stringify({ uid: user.uid })}).then((res) => res.json())
   })
 
-  if (user && data) {
-    if (data.subscriptionstatus != "active") {
-      router.push('/freetrial')
-    } else {
-      console.log("user is logged in / subscribed")
-    }
-  }
-
 
   const [openLetter, setOpenLetter] = useState(0);
   const [coverLetterOptions, setCoverLetterOptions] = useState([
@@ -69,11 +61,8 @@ export default function Dashboard() {
     console.log("user", user);
     if (!user) return;
 
-    console.log("user.uid", user.uid);
-
     axios.get("/api/letters/usersLetters?id=" + user.uid).then((res) => {
       setCoverLetterOptions(res.data);
-      console.log("res.data", res.data);
     });
   }, [user]);
 
@@ -203,6 +192,14 @@ export default function Dashboard() {
 
   if (!user) {
     router.push("/login");
+  }
+
+  if (user && data) {
+    if (data.subscriptionstatus != "active") {
+      router.push('/freetrial')
+    } else {
+      console.log("user is logged in / subscribed")
+    }
   }
 
   return (
