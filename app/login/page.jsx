@@ -10,16 +10,10 @@ import {
   signOut,
 } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  setDoc,
-  doc,
-  getDoc,
-} from "firebase/firestore";
 import app from '../component/FirebaseApp'
 import { useRouter } from "next/navigation";
+
+import axios from "axios";
 
 ///////////////////////////////////////////////////////////////
 //CONSIDER USING FIREBASE REDIRECT ON MOBILE INSTEAD OF POPUP//
@@ -37,23 +31,6 @@ function Login({ searchParams }) {
     console.log(router.query);
   }, [router]);
 
-  async function createFirestoreUser(user_id, displayname, email) {
-    const userRef = doc(db, "Users", user_id);
-    const userDoc = await getDoc(userRef);
-
-    if (userDoc.exists()) {
-      console.log("User document already exists");
-      return;
-    } else {
-      await setDoc(userRef, {
-        name: displayname,
-        email: email,
-        sub: "none",
-      });
-      console.log("User document created");
-    }
-  }
-
   async function googleLogin() {
     try {
       const result = await signInWithPopup(auth, provider);
@@ -61,7 +38,16 @@ function Login({ searchParams }) {
       const token = credential.accessToken;
       const user = result.user;
       router.push("/dashboard");
-      createFirestoreUser(user.uid, user.displayName, user.email);
+      
+      // we need to call the userLogin api
+      const res = await axios.post('/api/userLogin', {
+        user_id: user.uid,
+        email: user.email,
+        displayname: user.displayName,
+
+      })
+      console.log(res.data)
+
       const additionalUserInfo = await getAdditionalUserInfo(result);
     } catch (error) {
       const errorCode = error.code;
