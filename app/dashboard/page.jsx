@@ -8,8 +8,7 @@ import { useRouter } from "next/navigation";
 import { useAuthState } from "react-firebase-hooks/auth";
 import * as pdfjsLib from "pdfjs-dist/webpack";
 import app from "../component/FirebaseApp";
-import useSWR from 'swr'
-
+import useSWR from "swr";
 
 import axios from "axios";
 
@@ -19,11 +18,16 @@ export default function Dashboard() {
   const [user, loadingUser, error] = useAuthState(auth);
 
   // fetch user data from firestore
-  const { data, swrerror, swrisLoading } = useSWR('/api/firestoreUserData', (url) => {
-    return fetch(url, { method: 'POST', headers: {'Content-Type': 'application/json'}, 
-    body: JSON.stringify({ uid: user.uid })}).then((res) => res.json())
-  })
-
+  const { data, swrerror, swrisLoading } = useSWR(
+    "/api/firestoreUserData",
+    (url) => {
+      return fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ uid: user.uid }),
+      }).then((res) => res.json());
+    }
+  );
 
   const [openLetter, setOpenLetter] = useState(0);
   const [coverLetterOptions, setCoverLetterOptions] = useState([
@@ -51,8 +55,8 @@ export default function Dashboard() {
   const [letterText, setLetterText] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [letterNameEdit, setLetterNameEdit] = useState(-1);
 
-  
   const [letterTextFlag, setLetterTextFlag] = useState(false);
 
   const uploadResume = (e) => {};
@@ -145,6 +149,29 @@ export default function Dashboard() {
     setSidebarOpen(!sidebarOpen);
   };
 
+  const renameLetter = (e) => {
+    setLetterNameEdit(e);
+  };
+
+  const deleteLetter = (index) => {
+    axios.delete("/api/letters/letter", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        user_uid: user.uid,
+        letter_uid: coverLetterOptions[index].id,
+      },
+    });
+
+    if (openLetter === index) {
+      setOpenLetter(0);
+    }
+    const newCoverLetterOptions = [...coverLetterOptions];
+    newCoverLetterOptions.splice(index, 1);
+    setCoverLetterOptions(newCoverLetterOptions);
+  };
+
   const generateCoverLetter = async (e) => {
     if (loading) return;
 
@@ -161,7 +188,7 @@ export default function Dashboard() {
       user_id: user.uid,
     };
 
-    console.log(data)
+    console.log(data);
 
     const res = await fetch("/api/createCoverLetter", {
       method: "POST",
@@ -183,7 +210,6 @@ export default function Dashboard() {
     setLoading(false);
 
     if (!res.ok) throw Error(json.message);
-
   };
 
   if (loadingUser) {
@@ -196,9 +222,9 @@ export default function Dashboard() {
 
   if (user && data) {
     if (data.subscriptionstatus != "active") {
-      router.push('/freetrial')
+      router.push("/freetrial");
     } else {
-      console.log("user is logged in / subscribed")
+      console.log("user is logged in / subscribed");
     }
   }
 
@@ -240,18 +266,59 @@ export default function Dashboard() {
             <div className={s.cover_letter_selector_container}>
               {coverLetterOptions.map((coverLetterOption, index) => {
                 return (
-                  <button
+                  <div
                     className={s.cover_letter_selector_button}
                     key={`coverLetterOption-${index}`}
-                    onClick={(e) => {
-                      saveCoverLetter(e);
-                      setOpenLetter(index);
-                      setLetterText(coverLetterOption.contents);
-                    }}
                   >
-                    <img src="/cover_letter_button_icon.svg" alt="logo" />
-                    {coverLetterOption.title}
-                  </button>
+                    <div
+                      style={{
+                        flex: 1,
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: "1rem",
+                      }}
+                      onClick={(e) => {
+                        saveCoverLetter(e);
+                        setOpenLetter(index);
+                        setLetterText(coverLetterOption.contents);
+                      }}
+                    >
+                      <img src="/cover_letter_button_icon.svg" alt="logo" />
+                      {letterNameEdit === index ? (
+                        <input
+                          type="text"
+                          value={coverLetterOption.title}
+                          onChange={(e) => {
+                            setLetterTextFlag(true);
+                            const newCoverLetterOptions = [
+                              ...coverLetterOptions,
+                            ];
+                            newCoverLetterOptions[index].title = e.target.value;
+                            setCoverLetterOptions(newCoverLetterOptions);
+                          }}
+                          onKeyDown={(e) => { if (e.key === 'Enter') { setLetterNameEdit(-1); saveCoverLetter(index); } }}
+                          onBlur={() => (setLetterNameEdit(-1) || saveCoverLetter(index))}
+                          blurOnSubmit={true}
+                        />
+                      ) : (
+                        <p>{coverLetterOption.title}</p>
+                      )}
+                    </div>
+                    { letterNameEdit === -1 &&
+                    <div className={s.cover_letter_selector_button_right_icons}>
+                      <img
+                        src="/trash_icon.svg"
+                        alt="logo"
+                        onClick={() => deleteLetter(index)}
+                      />
+                      <img
+                        src="/edit_icon.svg"
+                        alt="logo"
+                        onClick={() => renameLetter(index)}
+                      />
+                    </div>}
+                  </div>
                 );
               })}
             </div>
@@ -357,7 +424,9 @@ export default function Dashboard() {
             />
           </div>
           <div className={s.input_container}>
-            <label htmlFor="Creativity input">The creativity meter: {creativityMeter}</label>
+            <label htmlFor="Creativity input">
+              The creativity meter: {creativityMeter}
+            </label>
 
             <input
               type="range"

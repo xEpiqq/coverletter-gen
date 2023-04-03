@@ -46,16 +46,23 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
-  const { user_uid, letter_uid } = request.body;
+  const body = await request.json();
+  const { user_uid, letter_uid } = body;
+
 
   try {
-    const letterRef = db.doc("users", user_uid, "letters", letter_uid);
-    const letterDoc = await getDoc(letterRef);
+    const letterRef = db
+      .collection("users")
+      .doc(user_uid)
+      .collection("letters")
+      .doc(letter_uid);
 
-    if (!letterDoc.exists()) {
+    const letterDoc = await letterRef.get();
+
+    if (!letterDoc.exists) {
       return new Response(JSON.stringify({ error: "Letter doesn't exist" }));
     } else {
-      await deleteDoc(letterRef);
+      await letterRef.delete();
       return new Response(JSON.stringify({}));
     }
   } catch (e) {
