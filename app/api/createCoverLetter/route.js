@@ -18,7 +18,14 @@ export async function POST(request) {
     additionalInstructions,
     resumePdf,
     creativityMeter,
+    user_id,
   } = body;
+
+  // check if the user has the correct permissions on firebase
+  // if not, return an error
+  if (!user_id) {
+    return new Response(JSON.stringify({ error: "User not found" }));
+  }
 
   try {
     const model = "gpt-3.5-turbo";

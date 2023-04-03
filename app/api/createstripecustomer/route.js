@@ -9,14 +9,14 @@ export async function POST(request) {
     return NextResponse.json(results);
 }
 
-async function createOrUpdateStripeCustomer(emailaddy, fullname, userid) {
-  const existingCustomers = await stripe.customers.list({ email: emailaddy, limit: 1 });
+async function createOrUpdateStripeCustomer(emailAddress, fullname, userid) {
+  const existingCustomers = await stripe.customers.list({ email: emailAddress, limit: 1 });
   // check if customer already exists in the DB
   if (existingCustomers.data.length > 0) {
     return existingCustomers.data[0];
   } else {Loading
     const customer = await stripe.customers.create({
-      email: emailaddy,
+      email: emailAddress,
       name: fullname,
       metadata: {
         uid: userid,

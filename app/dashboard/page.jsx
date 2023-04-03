@@ -16,6 +16,8 @@ import * as pdfjsLib from "pdfjs-dist/webpack";
 
 import app from "../component/FirebaseApp";
 
+import axios from "axios";
+
 export default function Dashboard() {
   const router = useRouter();
 
@@ -46,26 +48,65 @@ export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  
+  const [letterTextFlag, setLetterTextFlag] = useState(false);
+
   const auth = getAuth();
   const [user, loadingUser, error] = useAuthState(auth);
 
   const uploadResume = (e) => {};
 
   useEffect(() => {
-    const res = fetch("/api/getUsersLetters", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(""),
-    }).then((res) => {
-      const json = res.json().then((json) => {
-        setCoverLetterOptions(json.data);
-      });
+    console.log("user", user);
+    if (!user) return;
+
+    console.log("user.uid", user.uid);
+
+    axios.get("/api/letters/usersLetters?id=" + user.uid).then((res) => {
+      setCoverLetterOptions(res.data);
+      console.log("res.data", res.data);
     });
-  }, []);
+  }, [user]);
+
+  const saveCoverLetter = (e) => {
+    if (!letterTextFlag) {
+      return;
+    }
+    setLetterTextFlag(false);
+    console.log("openletteroptions", coverLetterOptions[openLetter]);
+    axios.post(
+      "/api/letters/letter",
+      {
+        user_uid: user.uid,
+        letter_uid: coverLetterOptions[openLetter].id,
+        letter_title: coverLetterOptions[openLetter].title,
+        letter_contents: coverLetterOptions[openLetter].contents,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  };
 
   const createCoverLetter = (e) => {
+    console.log("user.uid", user.uid);
+
+    axios.put(
+      "/api/letters/letter",
+      {
+        user_uid: user.uid,
+        letter_title: "New Cover Letter",
+        letter_contents: "This is a new cover letter",
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
     setCoverLetterOptions([
       ...coverLetterOptions,
       { title: "New Cover Letter", content: "This is a new cover letter" },
@@ -119,6 +160,7 @@ export default function Dashboard() {
       additionalInstructions,
       resumePdf,
       creativityMeter,
+      user_id: user.uid,
     };
 
     const res = await fetch("/api/createCoverLetter", {
@@ -189,8 +231,9 @@ export default function Dashboard() {
                     className={s.cover_letter_selector_button}
                     key={`coverLetterOption-${index}`}
                     onClick={(e) => {
+                      saveCoverLetter(e);
                       setOpenLetter(index);
-                      setLetterText(coverLetterOption.content);
+                      setLetterText(coverLetterOption.contents);
                     }}
                   >
                     <img src="/cover_letter_button_icon.svg" alt="logo" />
@@ -225,21 +268,23 @@ export default function Dashboard() {
             <textarea
               type="text"
               placeholder=""
-              value={coverLetterOptions[openLetter].content}
-              onChange={(e) =>
+              value={coverLetterOptions[openLetter].contents}
+              onChange={(e) => {
+                setLetterTextFlag(true);
                 setCoverLetterOptions(
                   coverLetterOptions.map((coverLetterOption, index) => {
                     if (index === openLetter) {
                       return {
                         ...coverLetterOption,
-                        content: e.target.value,
+                        contents: e.target.value,
                       };
                     } else {
                       return coverLetterOption;
                     }
                   })
-                )
-              }
+                );
+              }}
+              onBlur={(e) => saveCoverLetter(e)}
             />
           </div>
           <div className={s.content_center_input_container}>
@@ -312,8 +357,7 @@ export default function Dashboard() {
           </div>
           <div className={s.content_right_bottom}>
             <div className={s.nothing_attached_text}>
-              {resumePdf ? "Resume attached" :
-              "Nothing currently attached"}
+              {resumePdf ? "Resume attached" : "Nothing currently attached"}
             </div>
             <label className={s.upload_resume_button}>
               <input
