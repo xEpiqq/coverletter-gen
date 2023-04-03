@@ -47,7 +47,7 @@ export default function Dashboard() {
   const [jobDescription, setJobDescription] = useState("");
   const [additionalInstructions, setAdditionalInstructions] = useState("");
   const [resumePdf, setResumePdf] = useState(undefined);
-  const [creativityMeter, setCreativityMeter] = useState(0);
+  const [creativityMeter, setCreativityMeter] = useState(50);
   const [letterText, setLetterText] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -357,10 +357,11 @@ export default function Dashboard() {
             />
           </div>
           <div className={s.input_container}>
-            <label htmlFor="Creativity input">The creativity meter</label>
+            <label htmlFor="Creativity input">The creativity meter: {creativityMeter}</label>
 
             <input
               type="range"
+              className={s.slider}
               min="1"
               max="100"
               value={creativityMeter}
