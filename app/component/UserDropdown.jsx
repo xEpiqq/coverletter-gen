@@ -11,8 +11,8 @@ import { signOut, getAuth } from "firebase/auth";
 
 export default function UserDropdown() {
   const router = useRouter();
-    const auth = getAuth();
-    const [user, loadingUser, error] = useAuthState(auth);
+  const auth = getAuth();
+  const [user, loadingUser, error] = useAuthState(auth);
 
   return (
     <div className={s.dropdown}>
@@ -28,9 +28,9 @@ export default function UserDropdown() {
         </li>
         <li
           className={s.dropdown_item}
-          onClick={() => router.push("/dashboard")}
+          onClick={() => router.push("/account")}
         >
-          Settings
+          Account
         </li>
         <li className={s.dropdown_item} onClick={() => signOut(auth)}>
           Logout

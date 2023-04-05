@@ -20,7 +20,6 @@ import axios from "axios";
 ///////////////////////////////////////////////////////////////
 
 function Login({ searchParams }) {
-  const db = getFirestore(app);
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
   const [user, loading, error] = useAuthState(auth);
