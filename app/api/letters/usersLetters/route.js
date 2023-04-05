@@ -5,7 +5,7 @@ export async function GET(request) {
 
   try {
     const entries = await db
-      .collection("Users")
+      .collection("users")
       .doc(id)
       .collection("letters")
       .get();
