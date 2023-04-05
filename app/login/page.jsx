@@ -12,6 +12,7 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth";
 import app from '../component/FirebaseApp'
 import { useRouter } from "next/navigation";
+import { getFirestore, collection, addDoc, setDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 
 import axios from "axios";
 
